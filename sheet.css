@@ -53,6 +53,23 @@
 }
 
 
+/* PRELOAD CORE IMAGES */
+.sheet-pc-sheet::after{
+  position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
+  content:
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/0.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/10.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/20.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/30.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/40.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/50.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/60.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/70.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/80.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/90.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/100.png);
+}
+
 /* general input styles */
 input {
   color:black;
@@ -108,8 +125,78 @@ input.sheet-character-name-input {
   color: #FF4949;
 }
 
+/* Styling CORES */
+.sheet-style-circle {
+  /* border-style: solid;
+  border-radius: 50%;
+  border-width: 12px; */
+  background-position: center;
+  background-size: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 90px;
+  width: 90px;
+  font-size: 30px;
+  margin: 0 40px;
+}
+
+
+/* HEALTH CIRCLE CORES */
 .sheet-cores-health-circle {
-  border-color: #FF4949;
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/0.png);
+}
+
+input.sheet-hidden-core[value="10"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/10.png);
+}
+
+input.sheet-hidden-core[value="20"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/20.png);
+}
+
+input.sheet-hidden-core[value="30"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/30.png);
+}
+
+input.sheet-hidden-core[value="40"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/40.png);
+}
+
+input.sheet-hidden-core[value="50"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/50.png);
+}
+
+input.sheet-hidden-core[value="60"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/60.png);
+}
+
+input.sheet-hidden-core[value="70"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/70.png);
+}
+
+input.sheet-hidden-core[value="80"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/80.png);
+}
+
+input.sheet-hidden-core[value="90"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/90.png);
+}
+
+input.sheet-hidden-core[value="100"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/100.png);
 }
 
 .sheet-cores-energy-main {
@@ -128,20 +215,7 @@ input.sheet-character-name-input {
   border-color: #7E5BEF;
 }
 
-/* Styling CORES */
-.sheet-style-circle {
-  border-style: solid;
-  border-radius: 50%;
-  border-width: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  height: 60px;
-  width: 60px;
-  font-size: 30px;
-  margin: 0 40px;
-}
+
 
 input.sheet-cores-input {
   text-align: center;

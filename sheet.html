@@ -7,43 +7,44 @@
     <input name="attr_character_name" type="text" class="sheet-character-name-input">
   </div>
 
-  <div class="cores-flexbox">
-    <div class="cores-effort-main">
-      <div class="cores-effort-circle style-circle">
+  <div class="sheet-cores-flexbox">
+    <div class="sheet-cores-effort-main">
+      <div class="sheet-cores-effort-circle sheet-style-circle">
         <span>
-          <input class="cores-input cores-input-current" name="attr_effortCore" type="number" max="99" min="0" value="0">
-          <input class="cores-input cores-input-current" name="attr_effortCore_max" type="hidden" max="99" min="0" value="5">
+          <input class="sheet-cores-input sheet-cores-input-current" name="attr_effortCore" type="number" max="99" min="0" value="0">
+          <input class="sheet-cores-input sheet-cores-input-current" name="attr_effortCore_max" type="hidden" max="99" min="0" value="5">
         </span>
       </div>
-      <div class="cores-title-text">E F F O R T</div>
-      <span class="cores-max-text">BURN RATE:<input class="cores-input cores-input-max" name="attr_effortBurnRate" type="number" max="99" min="0" value="0"></span><br>
+      <div class="sheet-cores-title-text">E F F O R T</div>
+      <span class="sheet-cores-max-text">BURN RATE:<input class="cores-input cores-input-max" name="attr_effortBurnRate" type="number" max="99" min="0" value="0"></span><br>
       <button name="act_resetEffort" type="action" class="sheet-transfer-to-effort-button">R E S E T</button>
     </div>
     <div class="effort-divider"></div>
-    <div class="cores-health-main">
-      <div class="cores-health-circle style-circle">
-        <span><input class="cores-input cores-input-current" name="attr_healthCore" type="number" max="99" min="0" value="0"></span>
+    <div class="sheet-cores-health-main">
+      <input type="hidden" name="attr_healthCorePercentage" class="sheet-hidden-core">
+      <div class="sheet-cores-health-circle sheet-style-circle">
+        <span><input class="cores-input sheet-cores-input-current" name="attr_healthCore" type="number" max="99" min="0" value="0"></span>
       </div>
-      <div class="cores-title-text">H E A L T H</div>
+      <div class="sheet-cores-title-text">H E A L T H</div>
       <span class="cores-max-text">MAX:<input class="cores-input cores-input-max" name="attr_healthCore_max" type="number" max="99" min="0" value="0"></span>
       <br>
       <button name="act_transferHealthToEffort" type="action" class="sheet-transfer-to-effort-button">❮❮ E F F O R T</button>
     </div>
-    <div class="cores-energy-main">
-      <div class="cores-energy-circle style-circle">
-        <span><input class="cores-input cores-input-current" name="attr_staminaCore" type="number" max="99" min="0" value="0"></span>
+    <div class="sheet-cores-energy-main">
+      <div class="sheet-cores-energy-circle sheet-style-circle">
+        <span><input class="cores-input sheet-cores-input-current" name="attr_staminaCore" type="number" max="99" min="0" value="0"></span>
       </div>
-      <div class="cores-title-text">S T A M I N A</div>
-      <span class="cores-max-text">MAX:<input class="cores-input cores-input-max" name="attr_staminaCore_max" type="number" max="99" min="0" value="0"></span>
+      <div class="sheet-cores-title-text">S T A M I N A</div>
+      <span class="sheet-cores-max-text">MAX:<input class="sheet-cores-input sheet-cores-input-max" name="attr_staminaCore_max" type="number" max="99" min="0" value="0"></span>
       <br>
       <button name="act_transferStaminaToEffort" type="action" class="sheet-transfer-to-effort-button">❮❮ E F F O R T</button>
     </div>
-    <div class="cores-spirit-main">
-      <div class="cores-spirit-circle style-circle">
-        <span><input class="cores-input cores-input-current" name="attr_focusCore" type="number" max="99" min="0" value="0"></span>
+    <div class="sheet-cores-spirit-main">
+      <div class="sheet-cores-spirit-circle sheet-style-circle">
+        <span><input class="sheet-cores-input sheet-cores-input-current" name="attr_focusCore" type="number" max="99" min="0" value="0"></span>
       </div>
-      <div class="cores-title-text">F O C U S</div>
-      <span class="cores-max-text">MAX:<input class="cores-input cores-input-max" name="attr_focusCore_max" type="number" max="99" min="0" value="0"></span>
+      <div class="sheet-cores-title-text">F O C U S</div>
+      <span class="sheet-cores-max-text">MAX:<input class="sheet-cores-input sheet-cores-input-max" name="attr_focusCore_max" type="number" max="99" min="0" value="0"></span>
       <br>
       <button name="act_transferFocusToEffort" type="action" class="sheet-transfer-to-effort-button">❮❮ E F F O R T</button>
     </div>
@@ -793,6 +794,7 @@
 </rolltemplate>
 
 <script type="text/worker">
+
   // ACTUAL CODE
 
   const buttonlist = ["traits","magic","relations","inventory"];
@@ -1011,4 +1013,21 @@ on('change:repeating_items', function() {
 	repeatingSum("upkeepItems","items",["weaponUpkeep","show_flag"]);
 });
 
+// CORE PERCENTAGE CALCULATORS
+on("change:healthCore", function() {
+  getAttrs(["healthCore","healthCore_max"], function(values) {
+    let health = parseFloat(values.healthCore);
+    let healthMax = parseFloat(values.healthCore_max);
+    let healthPercentage = (health/healthMax)
+    healthPercentage = Math.round(healthPercentage*10)*10
+
+    if (healthPercentage > 100) {
+      healthPercentage = "100+"
+    }
+
+    setAttrs({
+      "healthCorePercentage": healthPercentage
+    })
+  });
+});
 </script>
