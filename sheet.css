@@ -77,8 +77,10 @@
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/health/85.png)
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/health/90.png)
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/health/95.png)
-  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/health/100.png);
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/health/100.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/goldcore.png);
 }
+
 
 /* general input styles */
 input {
@@ -238,6 +240,11 @@ input.sheet-hidden-core[value="95"] ~ .sheet-cores-health-circle {
 input.sheet-hidden-core[value="100"] ~ .sheet-cores-health-circle {
   display: flex;
   background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/health/100.png);
+}
+
+input.sheet-hidden-core[value="110"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/goldcore.png);
 }
 
 .sheet-cores-energy-main {
