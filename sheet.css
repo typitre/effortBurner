@@ -58,15 +58,25 @@
   position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
   content:
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/0.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/5.png)
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/10.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/15.png)
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/20.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/25.png)
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/30.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/35.png)
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/40.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/45.png)
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/50.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/55.png)
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/60.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/65.png)
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/70.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/75.png)
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/80.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/85.png)
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/90.png)
+  url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/95.png)
   url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/100.png);
 }
 
@@ -149,51 +159,82 @@ input.sheet-character-name-input {
   background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/0.png);
 }
 
+input.sheet-hidden-core[value="5"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/5.png);
+}
 input.sheet-hidden-core[value="10"] ~ .sheet-cores-health-circle {
   display: flex;
   background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/10.png);
 }
-
+input.sheet-hidden-core[value="15"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/15.png);
+}
 input.sheet-hidden-core[value="20"] ~ .sheet-cores-health-circle {
   display: flex;
   background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/20.png);
 }
-
+input.sheet-hidden-core[value="25"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/25.png);
+}
 input.sheet-hidden-core[value="30"] ~ .sheet-cores-health-circle {
   display: flex;
   background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/30.png);
 }
-
+input.sheet-hidden-core[value="35"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/35.png);
+}
 input.sheet-hidden-core[value="40"] ~ .sheet-cores-health-circle {
   display: flex;
   background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/40.png);
 }
-
+input.sheet-hidden-core[value="45"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/45.png);
+}
 input.sheet-hidden-core[value="50"] ~ .sheet-cores-health-circle {
   display: flex;
   background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/50.png);
 }
-
+input.sheet-hidden-core[value="55"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/55.png);
+}
 input.sheet-hidden-core[value="60"] ~ .sheet-cores-health-circle {
   display: flex;
   background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/60.png);
 }
-
+input.sheet-hidden-core[value="65"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/65.png);
+}
 input.sheet-hidden-core[value="70"] ~ .sheet-cores-health-circle {
   display: flex;
   background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/70.png);
 }
-
+input.sheet-hidden-core[value="75"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/75.png);
+}
 input.sheet-hidden-core[value="80"] ~ .sheet-cores-health-circle {
   display: flex;
   background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/80.png);
 }
-
+input.sheet-hidden-core[value="85"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/85.png);
+}
 input.sheet-hidden-core[value="90"] ~ .sheet-cores-health-circle {
   display: flex;
   background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/90.png);
 }
-
+input.sheet-hidden-core[value="95"] ~ .sheet-cores-health-circle {
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/95.png);
+}
 input.sheet-hidden-core[value="100"] ~ .sheet-cores-health-circle {
   display: flex;
   background-image: url(https://raw.githubusercontent.com/typitre/effortBurner/master/images/healthCore/100.png);

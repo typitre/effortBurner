@@ -1018,11 +1018,12 @@ on("change:healthCore", function() {
   getAttrs(["healthCore","healthCore_max"], function(values) {
     let health = parseFloat(values.healthCore);
     let healthMax = parseFloat(values.healthCore_max);
-    let healthPercentage = (health/healthMax)
-    healthPercentage = Math.round(healthPercentage*10)*10
+    let healthPercentage = (health/healthMax)*100
+    
+    healthPercentage = Math.ceil(healthPercentage/5)*5
 
     if (healthPercentage > 100) {
-      healthPercentage = "100+"
+      healthPercentage = 110
     }
 
     setAttrs({
