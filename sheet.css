@@ -1,0 +1,1354 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:wght@300;400&family=Work+Sans&display=swap');
+
+.sheet-pc-sheet {
+  font-family: 'Rubik';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color:#1F2D3D;
+  font-weight: 200;
+  width: 830px;
+}
+
+.sheet-npc-sheet {
+  font-family: 'Rubik';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color:#1F2D3D;
+  font-weight: 200;
+  width: 370px !important;
+}
+
+
+/*Configure the tab buttons*/
+.sheet-traits,
+.sheet-relations,
+.sheet-inventory,
+.sheet-magic {
+	display: none;
+}
+
+/* show the selected tab */
+.sheet-tabstoggle[value="traits"] ~ div.sheet-traits,
+.sheet-tabstoggle[value="relations"] ~ div.sheet-relations,
+.sheet-tabstoggle[value="inventory"] ~ div.sheet-inventory,
+.sheet-tabstoggle[value="magic"] ~ div.sheet-magic {
+	display: block;
+}
+
+.sheet-pc-sheet,
+.sheet-npc-sheet,
+.sheet-npc-spells {
+	display: none;
+}
+
+.sheet-sheetType[value="npc"] ~ div.sheet-npc-sheet,
+.sheet-sheetType[value="pc"] ~ div.sheet-pc-sheet {
+	display: block;
+}
+
+.sheet-npcMagicTab[value="true"] ~ div.sheet-npc-spells {
+	display: block;
+}
+
+
+/* general input styles */
+input {
+  color:black;
+  box-sizing: border-box;
+  padding: 0px 0px;
+  background-color: transparent;
+  border-style: none;
+  margin: 0;
+}
+
+
+/* character name styling */
+input.sheet-character-name-input {
+  text-align: center;
+  font-size: 36px;
+  width: 100%;
+}
+
+.sheet-character-name {
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+
+
+.sheet-cores-flexbox {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.sheet-cores-title-text {
+  font-size: 20px;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.sheet-effort-divider {
+  border: 1px solid #1F2D3D;
+  border-radius: 50%;
+}
+
+/* Section to color the CORES */
+.sheet-cores-effort-main {
+  color: #1FB6FF;
+}
+
+.sheet-cores-effort-circle {
+  border-color: #1FB6FF;
+}
+
+.sheet-cores-health-main {
+  color: #FF4949;
+}
+
+.sheet-cores-health-circle {
+  border-color: #FF4949;
+}
+
+.sheet-cores-energy-main {
+  color: #13CE66;
+}
+
+.sheet-cores-energy-circle {
+  border-color: #13CE66;
+}
+
+.sheet-cores-spirit-main {
+  color: #7E5BEF;
+}
+
+.sheet-cores-spirit-circle {
+  border-color: #7E5BEF;
+}
+
+/* Styling CORES */
+.sheet-style-circle {
+  border-style: solid;
+  border-radius: 50%;
+  border-width: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 60px;
+  width: 60px;
+  font-size: 30px;
+  margin: 0 40px;
+}
+
+input.sheet-cores-input {
+  text-align: center;
+  margin: 0;
+  transform: translate(0, -12px);
+}
+
+/* removes up/down arrow for numbers */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* removes up/down arrow for numbers */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sheet-cores-max-text {
+  margin-top: 5px;
+  font-size: 15px;
+  font-weight: lighter !important;
+}
+
+input.sheet-cores-input-current {
+  margin-top: 25px;
+  width: 60px !important;
+  height: 40px !important;
+  font-size: 45px !important;
+  font-weight: bold !important;
+}
+
+input.sheet-cores-input-max {
+  width: 1.6em !important;
+  height: 21px !important;
+  font-size: 17px !important;
+  font-weight: bold !important;
+  transform: translate(0, -2px);
+}
+
+/* transfer to effort button */
+button.sheet-transfer-to-effort-button {
+  border-style: none;
+  padding: 3px 9px;
+  margin: 5px;
+  font-size: 14px;
+  color: #1F2D3D;
+}
+
+
+/* attribute box styles */
+.sheet-attribute-text {
+  color: #F9FAFC;
+  font-size: 30px;
+  margin: 0 0 0 5px;
+  width: 100%;
+}
+
+input.sheet-attribute-input {
+  color: #FF7849;
+  font-size: 38px;
+  margin: 0 5px 18px 10px;
+  width: 40px !important;
+  text-align: center;
+  font-weight: 400;
+}
+
+button[type=roll].sheet-attribute-button::before,
+button[type=roll].sheet-inv-durability-roll::before  {
+  font-family: 'Pictos';
+  content: '4';
+  color: #F9FAFC;
+}
+
+button {
+  background-image: none;
+  background-color: #F8B700;
+  border: 0px none;
+  border-radius: 0%;
+  text-transform: uppercase;
+  text-shadow: none;
+  text-align: center;
+}
+
+button:hover {
+  background-image: none;
+  background-color: #FFD55F;
+}
+
+button:active {
+  background-image: none;
+  background-color: #8492A6;
+}
+
+button[type=roll].sheet-attribute-button {
+  border-style: none;
+  margin: 0 8px 0 0;
+  padding: 0;
+  height: 30px;
+  width: 30px;
+  transform: translate(0, -7px);
+  border-radius: 3px;
+}
+
+.sheet-attribute-bottom-level {
+  color: #8492A6;
+  font-size: 14px;
+  transform: translate(0, -16px);
+}
+
+.sheet-attribute-bound-box {
+  padding: 3px 0 0 10px; 
+  margin: 5px 0;
+  height: 75px;
+  background-color: #1F2D3D;
+  width: 255px;
+}
+
+.sheet-attributes-flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 0px;
+  margin: 15px 0 0 0;
+  justify-content: space-between;
+}
+
+
+.sheet-traits-repeating-box {
+  border: 5px solid #1F2D3D;
+  width: 400px;
+  margin: 0 0 10px 0;
+}
+.sheet-traits-title {
+  background-color: #3C4858;
+  color: #C0CCDA;
+}
+
+input.sheet-traits-title-text {
+  color: #F9FAFC;
+  font-size: 20px;
+  padding: 0 5px 0 6px;
+  margin: 6px 0 9px 0;
+  width: 350px;
+  text-transform: uppercase;
+}
+
+input.sheet-traits-effort-boost-text,
+input.sheet-relation-mod-text {
+  color: #FF7849;
+  font-size: 17px;
+  height: 25px;
+  transform: translate(0px, -1px);
+  width: 18px !important;
+  text-align: center;
+  font-weight: bold;
+  background-color: #1F2D3D;
+  padding: 3px;
+}
+
+input.sheet-notoriety-reputation {
+  color: #FF7849;
+  font-size: 13px;
+  height: 25px;
+  transform: translate(0px, -1px);
+  width: 55% !important;
+  text-align: center;
+  font-weight: normal;
+  background-color: #1F2D3D;
+  padding: 3px;
+}
+
+input.sheet-misc-mod-text {
+  color: #FF7849;
+  font-size: 17px;
+  height: 25px;
+  transform: translate(6px, -1px);
+  width: 60px !important;
+  text-align: center;
+  font-weight: bold;
+  background-color: #1F2D3D;
+  padding: 3px;
+}
+
+input.sheet-relation-mod-text {
+  width: 40px !important;
+}
+
+.sheet-traits-effort-boost-text,
+.sheet-relation-mod {
+  margin: 0 0 0 7px;
+  color: #C0CCDA;
+}
+
+select.sheet-active-trait-attribute-selector {
+  border-style: none;
+  width: 90px;
+  padding: 0;
+  height: 25px;
+  background-color: #1F2D3D;
+  color: #FF7849;
+  margin: 5px 0 5px 5px;
+}
+
+select.sheet-relation-mod-selector {
+  border-style: none;
+  width: 130px;
+  padding: 0;
+  height: 25px;
+  background-color: #1F2D3D;
+  color: #FF7849;
+  margin: 8px 5px 5px 5px;
+}
+
+select.sheet-notoriety-mod-selector {
+  border-style: none;
+  width: 100px;
+  padding: 0;
+  height: 25px;
+  background-color: #1F2D3D;
+  color: #FF7849;
+  margin: 8px 5px 5px 5px;
+}
+
+textarea.sheet-traits-description-text,
+textarea.sheet-relation-description-text {
+  background-color: #E0E6ED;
+  color: #1F2D3D;
+  padding: 7px !important;
+  font-size: 14px !important;
+}
+
+.sheet-traits-description,
+.sheet-magic-description,
+.sheet-relations-description {
+  background-color: #E0E6ED;
+}
+
+.sheet-magic-repeating-box {
+  border: 5px solid #1F2D3D;
+  width: 820px;
+  margin: 15px 0 10px 0;
+}
+
+
+.sheet-magic-misc {
+  transform: translate(0, 6px);
+}
+
+/* Auto expanding CSS for textareas */
+.sheet-auto-expand {
+	position: relative;
+	cursor: text;
+  word-wrap: break-word;
+  min-height: 80px;
+}
+
+.sheet-relation-expand {
+	position: relative;
+	cursor: text;
+  word-wrap: break-word;
+  min-height: 35px;
+}
+
+.sheet-magic-expand {
+	position: relative;
+	cursor: text;
+  word-wrap: break-word;
+  min-height: 65px;
+}
+
+.sheet-relation-expand {
+	position: relative;
+	cursor: text;
+  word-wrap: break-word;
+  min-height: 30px;
+}
+
+.sheet-auto-expand span,
+.sheet-relation-expand span,
+.sheet-magic-expand span {
+	visibility: hidden;
+	white-space: pre-wrap;
+	display: block;
+}
+.sheet-auto-expand textarea,
+.sheet-relation-expand textarea,
+.sheet-magic-expand textarea {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	margin: 0;
+	overflow: hidden;
+	resize: none;
+	height: 100%;
+	width: 100%;
+	display: block;
+	box-sizing: border-box;
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	color: inherit;
+	font: inherit;
+	letter-spacing: inherit;
+	padding: inherit;
+	text-align: inherit;
+	text-transform: inherit;
+}
+
+.sheet-traits-flexbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sheet-left-col-bounding-box {
+  margin: 0 5px 0 0;
+  width: 100%;
+}
+
+.sheet-right-col-bounding-box {
+  margin: 0 0 0 5px;
+  width: 100%;
+}
+
+.sheet-traits-header-text {
+  text-align: center !important;
+  color: #1F2D3D;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 0 10px 0;
+  width: 100%;
+}
+
+button[type=roll].sheet-trait-button::before,
+button[type=roll].sheet-magic-trait-button::before  {
+  font-family: 'Pictos';
+  content: '4';
+  color: #F9FAFC;
+}
+
+button[type=roll].sheet-trait-button {
+  border-style: none;
+  margin: 0 8px 0 0;
+  padding: 0;
+  height: 30px;
+  width: 30px;
+  transform: translate(14px, 0px);
+  border-radius: 3px;
+}
+
+.sheet-tab-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+button.sheet-tab-button {
+  height: 25px;
+  width: 100%;
+  margin: 10px 0 0 0;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.sheet-relations-flexbox {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.sheet-relations-bounding-box {
+  width: 400px;
+  height: 100%;
+  border: 5px solid #1F2D3D;
+  margin: 15px 0 10px 0;
+  
+}
+
+.sheet-relations-header {
+  background-color: #3C4858;
+  padding: 0 0 4px 0;
+}
+
+input.sheet-relation-name-text {
+  font-size: 18px;
+  color: #F9FAFC;
+  margin: 5px 8px 5px 7px;
+  width: 90%;
+}
+
+.sheet-relation-name-text {
+  padding: 0 0 2px 0;
+}
+
+button[type=roll].sheet-relationship-button {
+  border-style: none;
+  margin: 5px 8px 0 0;
+  padding: 0;
+  height: 30px;
+  width: 30px;
+  border-radius: 3px;
+}
+
+button[type=roll].sheet-relationship-button::before  {
+  font-family: 'Pictos';
+  content: 'U';
+  color: #F9FAFC;
+}
+
+.sheet-magic-component-flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.sheet-magic-components {
+  padding: 0 10px 0 10px;
+}
+
+.sheet-magic-name-text {
+  margin: 3px 0 5px 7px;
+  padding: 3px;
+  width: 90%;
+}
+
+select.sheet-magic-attribute-selector {
+  border-style: none;
+  width: 90px;
+  padding: 0;
+  height: 25px;
+  background-color: #1F2D3D;
+  color: #FF7849;
+  margin: 5px 0 5px 5px;
+}
+
+select.sheet-magic-attribute-selector {
+  width: 300px;
+}
+
+.sheet-magic-individual-component {
+  margin: 0px 1px;
+}
+
+input.sheet-magic-DC-result {
+  color: #F9FAFC;
+  font-size: 25px;
+  height: 35px;
+  transform: translate(0px, -1px);
+  width: 55px !important;
+  text-align: center;
+  font-weight: bold;
+  background-color: #1F2D3D;
+  padding: 3px;
+  margin: 0 0 5px 0;
+}
+
+.sheet-magic-DC-text {
+  margin: 0 5px 0 0;
+}
+
+button[type=roll].sheet-magic-button {
+  border-style: none;
+  margin: 0 0px 0 0;
+  padding: 0;
+  height: 35px;
+  width: 35px;
+  border-radius: 3px;
+  transform: translate(0, -1px);
+}
+
+button[type=roll].sheet-magic-button::before  {
+  font-family: 'Pictos';
+  content: '4';
+  color: #F9FAFC;
+}
+
+.sheet-header-trait-flexbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.charsheet button[type=roll].sheet-magic-trait-button {
+  border-style: none;
+  margin: 5px 8px 0 0;
+  padding: 0;
+  height: 30px;
+  width: 30px;
+  border-radius: 3px;
+}
+
+
+
+
+.sheet-hidden {
+  display: none;
+}
+
+.sheet-black-border {
+  border: 5px solid #1F2D3D;
+}
+
+.sheet-steel-bg {
+  background-color: #273444;
+}
+
+.sheet-slate-bg {
+  background-color: #3C4858;
+}
+
+.sheet-font-18 {
+  font-size: 18px;
+}
+
+.sheet-font-snow {
+  color: #F9FAFC;
+}
+
+.sheet-font-extra-dark-smoke {
+  color: #C0CCDA;
+}
+
+.sheet-full-size-repeater {
+  width: 820px;
+  margin: 15px 0 5px 0;
+
+}
+
+.sheet-half-size-repeater {
+  width: 370px;
+  margin: 15px 0 5px 0;
+  border-radius: 10px; 
+}
+
+.sheet-uppercase {
+  text-transform: uppercase;
+}
+
+.sheet-width-300 {
+  width: 300px;
+}
+
+.sheet-tab-divider {
+  width: 25px;
+}
+
+select.sheet-select-width-70 {
+  width: 70px;
+}
+
+select.sheet-select-width-80 {
+  width: 80px;
+}
+
+select.sheet-select-width-90 {
+  width: 90px;
+}
+
+select.sheet-select-width-110 {
+  width: 110px;
+}
+
+select.sheet-select-width-220 {
+  width: 220px;
+}
+
+select.sheet-select-width-260 {
+  width: 260px;
+}
+
+select.sheet-select-width-180 {
+  width: 180px;
+}
+
+select.sheet-select-width-130 {
+  width: 130px;
+}
+
+select.sheet-select-width-100 {
+  width: 100px;
+}
+
+
+
+.sheet-traits-header-text {
+  width: 100%;
+}
+
+
+
+/* INVENTORY SECTION */
+
+.sheet-inv-flexbox {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.sheet-inv-snow {
+  color: #F9FAFC;
+  text-transform: uppercase;
+}
+
+input.sheet-inv-input {
+  color: #8492A6;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+input.sheet-inv-input-name {
+  color: #8492A6;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+select.sheet-inv-input {
+  color: #8492A6;
+  text-transform: uppercase;
+  border: 0;
+  padding: 0;
+  font-size: 13px;
+  height: 18px;
+  background-color: transparent;
+  text-align-last: center;
+}
+
+/* WIDTHS
+30 carried
+150 nmae
+40 DMG
+80 RANGE
+55 MEND
+55 Upkeep
+60 Durability
+270 Condition
+*/
+
+.sheet-inv-carried {
+  width: 40px;
+}
+
+.sheet-inv-name {
+  width: 160px;
+}
+
+.sheet-inv-DMG {
+  width: 50px;
+}
+
+.sheet-inv-range {
+  width: 90px;
+}
+
+.sheet-inv-mend {
+  width: 65px;
+}
+
+input.sheet-inv-mend {
+  text-align: left;
+  width: 40px;
+  transform: translate(0px, -1px)
+}
+
+.sheet-inv-upkeep {
+  width: 65px;
+}
+
+input.sheet-inv-upkeep {
+  text-align: left;
+  width: 40px;
+  transform: translate(0px, -1px)
+}
+
+.sheet-inv-dollarsign {
+  margin: 0 0px 0 0;
+  color: #8492A6;
+}
+
+.sheet-inv-durability-header {
+  width: 70px;
+  transform: translateX(-9px);
+}
+
+.sheet-inv-durability {
+  width: 70px;
+  display: flex;
+}
+
+.sheet-inv-durability-num {
+  width: 30px;
+  height: 18px !important;
+}
+
+.sheet-inv-durability-roll {
+  width: 27px;
+  height: 18px;
+}
+
+button.sheet-inv-durability-roll {
+  padding: 0 !important;
+}
+
+.sheet-inv-condition {
+  width: 270px;
+}
+
+.repcontrol[data-groupname="repeating_weapons"],
+.repcontrol[data-groupname="repeating_items"] {
+  background: #273444;
+}
+
+.sheet-inv-weapon-header {
+  padding: 0 0 5px 0;
+}
+
+.sheet-inv-remove-text-transform {
+  text-transform: none !important;
+}
+
+.repcontainer[data-groupname=repeating_weapons] .repitem:first-child,
+.repcontainer[data-groupname=repeating_items] .repitem:first-child {
+  padding: 8px 0 0 0;
+}
+
+/* EQUIPMENT, NOT WEAPONS */
+
+.sheet-inv-name-equip {
+  width: 290px;
+}
+
+input.sheet-inv-equipment-notes-text {
+  padding: 3px 10px;
+  margin-bottom: 15px;
+  margin-left: 35px;
+  width: 760px;
+  color: #8492A6;
+}
+
+
+/* MONEY */
+
+.sheet-inv-money-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+  align-items: center;
+}
+
+input.sheet-inv-money {
+  text-align: center;
+  width: 105px;
+}
+
+.sheet-inv-money-section,
+input.sheet-inv-money {
+
+  color: #1F2D3D;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.sheet-inv-dollarbill-bounding-box {
+  background-color: #13CE66;  
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+  border: solid #13CE66 5px;
+  border-radius: 4px;
+  width: 121px;
+}
+
+
+.sheet-pictos {
+  font-family: pictos;
+}
+
+input.sheet-inv-upkeepTotal-input {
+  width: 35px;
+  text-align: right;
+  transform: translateY(-1.5px);
+}
+
+button.sheet-inv-upkeep-button {
+  background-color: #FF4949;
+}
+
+button.sheet-inv-upkeep-button:hover {
+  background-color: #e34242;
+}
+
+/* CHECKBOX */
+
+/* Configure a container for the toggle */
+.sheet-toggle-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Configure the button styling. This example makes it look like a checkbox. */
+button.sheet-inv-toggle {
+  padding: 0;
+  border: solid 1px #a8a8a8;
+  cursor: pointer;
+
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 12px;
+  background-color: transparent;
+}
+
+/* Hide the "checked" section of the toggle if the attribute value is not "1". */
+input.sheet-inv-toggle[value="1"] ~ button.sheet-inv-toggle {
+  background-color: #FFC82C;
+}
+
+input.sheet-inv-toggle[value="1"] ~ input.sheet-inv-input,
+input.sheet-inv-toggle[value="1"] ~ select.sheet-inv-input,
+input.sheet-inv-toggle[value="1"] ~ input.sheet-inv-input-name,
+input.sheet-inv-toggle[value="1"] ~ select.sheet-inv-input-name {
+  color: #FFC82C;
+}
+
+input.sheet-inv-toggle:not([value="1"]) ~ button.sheet-inv-durability-roll {
+  background-color: #8492A6;
+}
+
+input.sheet-inv-toggle[value="1"] ~ input.sheet-inv-equipment-notes-text {
+  color: #F9FAFC;
+}
+
+input.sheet-inv-toggle[value="1"] ~ span.sheet-inv-dollarsign {
+  color: #FFC82C;
+}
+
+
+/* Hide the "checked" section of the toggle if the attribute value is not "1". */
+input.sheet-inv-toggle:not([value="1"]) ~ button.sheet-inv-toggle > span.sheet-checked {
+  display: none;
+}
+
+
+
+/* NPC SHEET */
+
+.sheet-npc-name {
+  display: flex;
+  justify-content: center;
+  background-color: #1F2D3D;
+}
+
+input.sheet-npc-name-input {
+  text-align: center;
+  font-size: 25px;
+  color: #F9FAFC;
+  width: 370px;
+}
+
+
+
+.sheet-npc-attributes {
+  display: flex;
+  justify-content: center;
+}
+
+.sheet-npc-attribute-box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: solid 4px;
+  border-radius: 15px;
+  padding: 3px;
+  margin: 5px;
+}
+
+
+.sheet-npc-attribute-box-physical {
+  border-color: #FF7849;
+  background-color: #FF9E7C;
+}
+
+.sheet-npc-attribute-box-social {
+  border-color: #13CE66;
+  background-color: #29EB7F;
+}
+
+.sheet-npc-attribute-box-mental {
+  border-color: #7E5BEF;
+  background-color: #A389F4;
+}
+
+.sheet-npc-attribute-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.sheet-npc-attribute-name {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+
+input.sheet-npc-attribute-bonus-input,
+input.sheet-npc-attribute-bonus-input- {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+
+button[type=roll].sheet-npc-attribute-buttons-button-roll  {
+  font-size: 13px;
+  color: #1F2D3D;
+}
+
+
+button[type=roll].sheet-npc-attribute-buttons-button-roll::before  {
+  font-family: 'Pictos';
+  content: '';
+  color: #F9FAFC;
+  font-weight: bold;
+}
+
+
+button.sheet-npc-attribute-buttons-button-roll {
+  border-radius: 4px;
+  background-color: #FFC82C;
+}
+
+button.sheet-npc-button-color-orange {
+  background-color: #F9FAFC;
+  color: #1F2D3D;
+}
+
+button.sheet-npc-button-color-orange:hover {
+  background-color: #EFF2F7;
+  color: #1F2D3D;
+}
+
+
+
+
+.sheet-npc-effort {
+  display:  flex;
+  justify-content: center;
+  border: solid 4px #1FB6FF;
+  border-radius: 10px;
+  padding: 3px;
+  margin: 3px 6px 3px 6px;
+  background-color: #85D7FF;
+}
+
+input.sheet-npc-effort-input {
+  width: 60px;
+  text-align: center;
+}
+
+.sheet-npc-effort-text {
+  font-weight: bold;
+}
+
+.sheet-npc-trait-bounding-box {
+  display: flex;
+  justify-content: space-between;
+  border: solid 4px #1F2D3D;
+  border-radius: 10px;
+  padding: 3px;
+  margin: 8px 6px 8px 6px;
+  background-color: #3C4858;
+}
+
+.sheet-npc-trait-bounding-box-col {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  border: solid 4px #1F2D3D;
+  border-radius: 10px;
+  padding: 3px;
+  margin: 8px 6px 8px 6px;
+  background-color: #3C4858;
+}
+
+.sheet-npc-traits-trait-buttons {
+  display: flex;
+}
+
+
+input.sheet-npc-traits-mod-input,
+input.sheet-npc-traits-title-input {
+  font-size: 16px;
+  color: #F9FAFC;
+  text-transform: uppercase;
+}
+
+input.sheet-npc-traits-mod-input {
+  width: 25px !important;
+  text-align: center;
+}
+
+input.sheet-npc-traits-boost-input,
+input.sheet-npc-traits-title-input {
+  font-size: 16px;
+  color: #F9FAFC;
+}
+
+input.sheet-npc-traits-boost-input {
+  width: 15px !important;
+  text-align: center;
+  color: #FFC82C;
+}
+
+textarea.sheet-npc-traits-description-text {
+  color: #C0CCDA;
+  padding: 0px !important;
+  margin-top: 3px;
+}
+
+.sheet-npc-expand {
+  min-height: 20px;
+}
+
+.sheet-npc-trait-bounding-box-inner {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+
+
+input[type="number"].sheet-npc-attribute-bonus-input {
+  width: 30px !important;
+}
+
+input[type="number"].sheet-npc-attribute-bonus-input-calc {
+  width: 40px;
+  text-align: center;
+}
+
+.sheet-npc-autocalc,
+input.sheet-npc-autocalc {
+  text-align: center;
+  width: 30px !important;
+  font-size: 25px;
+  color: #273444;
+  margin-bottom: 5px;
+}
+
+input.sheet-npc-autocalc:before {
+  content: "&lbrace;";
+}
+
+.sheet-auto-span {
+  font-size: 18px;
+}
+
+
+
+
+
+
+/* ROLL TEMPLATES */
+
+.sheet-rolltemplate-attribute .sheet-template-container {
+  background-color: #273444 !important;
+  border: 5px solid #1F2D3D;
+  color: #8492A6;
+  font-family: 'Rubik';
+  font-weight: 300;
+  font-size: 16px;
+  padding: 8px;
+}
+
+.sheet-rolltemplate-attribute .inlinerollresult,
+.sheet-rolltemplate-attribute .sheet-template-fake-roll {
+  color: #FF5216;
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.sheet-rolltemplate-attribute .sheet-template-fake-roll {
+  color: #FFC82C;
+}
+
+.sheet-rolltemplate-attribute .inlinerollresult.fullcrit,
+.sheet-rolltemplate-attribute .inlinerollresult.importantroll,
+.sheet-rolltemplate-attribute .inlinerollresult.fullfail {
+  color: #FF5216;
+  background-color: transparent;
+  border: none;
+}
+
+/* .sheet-rolltemplate-attribute .sheet-template-row {
+  margin: 8px;
+} */
+
+.sheet-rolltemplate-attribute a[href^="~"] {
+  background-image: none;
+  background-color: #F8B700;
+  border: 0px none;
+  border-radius: 0%;
+  text-transform: uppercase;
+  text-shadow: none;
+  color: #1F2D3D;
+  margin-top: 10px;
+}
+
+.sheet-rolltemplate-attribute a[href^="~"]:hover {
+  background-image: none;
+  background-color: #FFD55F;
+}
+
+.sheet-rolltemplate-attribute a[href^="~"]:active {
+  background-image: none;
+  background-color: #8492A6;
+}
+
+
+.sheet-rolltemplate-attribute .sheet-template-pink .inlinerollresult.fullcrit,
+.sheet-rolltemplate-attribute .sheet-template-pink .inlinerollresult.importantroll,
+.sheet-rolltemplate-attribute .sheet-template-pink .inlinerollresult.fullfail,
+.sheet-rolltemplate-attribute .sheet-template-pink .inlinerollresult {
+  color: #C0CCDA;
+}
+
+
+.sheet-rolltemplate-attribute .sheet-template-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sheet-rolltemplate-attribute .sheet-template-roll-results {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.sheet-rolltemplate-attribute .sheet-template-textarea {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.sheet-rolltemplate-attribute .sheet-template-header {
+  text-transform: uppercase;
+  color: #F9FAFC;
+  font-size: 18px;
+}
+
+.sheet-rolltemplate-attribute .sheet-template-subHeader {
+  text-transform: uppercase;
+  color: #FFC82C;
+  font-size: 13px;
+}
+
+.sheet-rolltemplate-attribute .sheet-template-subSubHeader {
+  text-transform: uppercase;
+  color: #FF9E7C;
+  font-size: 13px;
+}
+
+
+.sheet-rolltemplate-attribute .sheet-template-durability-results .inlinerollresult,
+.sheet-rolltemplate-attribute .sheet-template-durability-results .inlinerollresult.fullcrit,
+.sheet-rolltemplate-attribute .sheet-template-durability-results .inlinerollresult.importantroll,
+.sheet-rolltemplate-attribute .sheet-template-durability-results .inlinerollresult.fullfail,
+.sheet-rolltemplate-attribute .sheet-template-durability-results {
+  color: #8492A6;
+  background-color: transparent;
+  border: none;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.sheet-rolltemplate-attribute .sheet-template-fake-roll {
+  color: #FFC82C;
+}
+
+
+.sheet-rolltemplate-attribute .sheet-template-durability-loss {
+  color: #FF4949;
+  font-size: 13px;
+  margin: 5px 0 0 0;
+  text-transform: uppercase;
+}
+
+.sheet-rolltemplate-attribute .sheet-template-durability-win {
+  color: #13CE66;
+  font-size: 13px;
+  margin: 5px 0 0 0;
+  text-transform: uppercase;
+}
+
+
+.sheet-rolltemplate-attribute .sheet-template-crit {
+  color: #13CE66;
+  font-size: 12px;
+}
+
+.sheet-rolltemplate-attribute .sheet-template-fail {
+  color: #FF4949;
+  font-size: 12px;
+}
