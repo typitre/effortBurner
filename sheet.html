@@ -1,5 +1,8 @@
 <!-- NPC / PC -->
 <input type="hidden" name="attr_sheetType" value="npc" class="sheet-sheetType">
+<input type="hidden" name="attr_equippedItemList" value="empty">
+<input type="hidden" name="attr_equippedWeaponList" value="empty">
+<input type="hidden" name="attr_equippedMasterList" value="empty">
 
 
 <div class="sheet-pc-sheet">
@@ -9,10 +12,11 @@
 
   <div class="sheet-cores-flexbox">
     <div class="sheet-cores-effort-main">
+      <input type="hidden" name="attr_effortCorePercentage" class="sheet-hidden-core-effort">
       <div class="sheet-cores-effort-circle sheet-style-circle">
         <span>
           <input class="sheet-cores-input sheet-cores-input-current" name="attr_effortCore" type="number" max="99" min="0" value="0">
-          <input class="sheet-cores-input sheet-cores-input-current" name="attr_effortCore_max" type="hidden" max="99" min="0" value="5">
+          <input class="sheet-cores-input sheet-cores-input-current" name="attr_effortCore_max" type="hidden" max="99" min="0" value="10">
         </span>
       </div>
       <div class="sheet-cores-title-text">E F F O R T</div>
@@ -21,7 +25,7 @@
     </div>
     <div class="effort-divider"></div>
     <div class="sheet-cores-health-main">
-      <input type="hidden" name="attr_healthCorePercentage" class="sheet-hidden-core">
+      <input type="hidden" name="attr_healthCorePercentage" class="sheet-hidden-core-health">
       <div class="sheet-cores-health-circle sheet-style-circle">
         <span><input class="cores-input sheet-cores-input-current" name="attr_healthCore" type="number" max="99" min="0" value="0"></span>
       </div>
@@ -30,8 +34,9 @@
       <br>
       <button name="act_transferHealthToEffort" type="action" class="sheet-transfer-to-effort-button">❮❮ E F F O R T</button>
     </div>
-    <div class="sheet-cores-energy-main">
-      <div class="sheet-cores-energy-circle sheet-style-circle">
+    <div class="sheet-cores-stamina-main">
+      <input type="hidden" name="attr_staminaCorePercentage" class="sheet-hidden-core-stamina">
+      <div class="sheet-cores-stamina-circle sheet-style-circle">
         <span><input class="cores-input sheet-cores-input-current" name="attr_staminaCore" type="number" max="99" min="0" value="0"></span>
       </div>
       <div class="sheet-cores-title-text">S T A M I N A</div>
@@ -39,8 +44,9 @@
       <br>
       <button name="act_transferStaminaToEffort" type="action" class="sheet-transfer-to-effort-button">❮❮ E F F O R T</button>
     </div>
-    <div class="sheet-cores-spirit-main">
-      <div class="sheet-cores-spirit-circle sheet-style-circle">
+    <div class="sheet-cores-focus-main">
+      <input type="hidden" name="attr_focusCorePercentage" class="sheet-hidden-core-focus">
+      <div class="sheet-cores-focus-circle sheet-style-circle">
         <span><input class="sheet-cores-input sheet-cores-input-current" name="attr_focusCore" type="number" max="99" min="0" value="0"></span>
       </div>
       <div class="sheet-cores-title-text">F O C U S</div>
@@ -53,7 +59,7 @@
   <div class="sheet-attributes-flexbox">
     <div class="sheet-attribute-bound-box">
       <div class="sheet-attribute-top-level">
-        <button class="sheet-attribute-button" type="roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=Agile}} {{crit=[[17+@{agile}]]}} {{fail=[[5+@{agile}]]}} {{result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{agile}]]}} {{effortDie=[[1d4]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d4)}}" name="roll_agile-roll"></button><span class="sheet-attribute-text">AGILE</span><input class="sheet-attribute-input" type="number" name="attr_agile" value="0">
+        <button class="sheet-attribute-button" type="roll" value="&{template:attribute}  {{header=@{character_name}}} {{roll-type=Agile}} {{crit=[[19+@{agile}]]}} {{fail=[[2+@{agile}]]}} {{result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{agile}]]}} {{effortDie=[[1d3+1d@{equippedMasterList}]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d3)}} {{burn-rate=@{effortBurnRate}}}" name="roll_agile-roll"></button><span class="sheet-attribute-text">AGILE</span><input class="sheet-attribute-input" type="number" name="attr_agile" value="0">
       </div>
       <div class="sheet-attribute-bottom-level">
         movement, quickness, dexterity
@@ -61,7 +67,7 @@
     </div>
     <div class="sheet-attribute-bound-box">
       <div class="sheet-attribute-top-level">
-        <button class="sheet-attribute-button" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=Aware}} {{crit=[[17+@{aware}]]}} {{fail=[[5+@{aware}]]}} {{result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{aware}]]}} {{effortDie=[[1d4]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d4)}}" name="roll_aware-roll" type="roll"></button><span class="sheet-attribute-text">AWARE</span><input class="sheet-attribute-input" type="number" name="attr_aware" value="0">
+        <button class="sheet-attribute-button" value="&{template:attribute}  {{header=@{character_name}}} {{roll-type=Aware}} {{crit=[[19+@{aware}]]}} {{fail=[[2+@{aware}]]}} {{result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{aware}]]}} {{effortDie=[[1d3+1d@{equippedMasterList}]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d3)}} {{burn-rate=@{effortBurnRate}}}" name="roll_aware-roll" type="roll"></button><span class="sheet-attribute-text">AWARE</span><input class="sheet-attribute-input" type="number" name="attr_aware" value="0">
       </div>
       <div class="sheet-attribute-bottom-level">
         observing, intuition, empathy
@@ -69,7 +75,7 @@
     </div>
     <div class="sheet-attribute-bound-box">
       <div class="sheet-attribute-top-level">
-        <button class="sheet-attribute-button" type="roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=TOUGH}} {{crit=[[17+@{tough}]]}} {{fail=[[5+@{tough}]]}} {{result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{tough}]]}} {{effortDie=[[1d4]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d4)}}" name="roll_tough-roll"
+        <button class="sheet-attribute-button" type="roll" value="&{template:attribute}  {{header=@{character_name}}} {{roll-type=Tough}} {{crit=[[19+@{tough}]]}} {{fail=[[2+@{tough}]]}} {{result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{tough}]]}} {{effortDie=[[1d3+1d@{equippedMasterList}]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d3)}} {{burn-rate=@{effortBurnRate}}}" name="roll_tough-roll"
         ></button><span class="sheet-attribute-text">TOUGH</span><input class="sheet-attribute-input" type="number" name="attr_tough" value="0">
       </div>
       <div class="sheet-attribute-bottom-level">
@@ -78,7 +84,7 @@
     </div>
     <div class="sheet-attribute-bound-box">
       <div class="sheet-attribute-top-level">
-        <button class="sheet-attribute-button" type="roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=Guile}} {{crit=[[17+@{guile}]]}} {{fail=[[5+@{guile}]]}} {{result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{guile}]]}} {{effortDie=[[1d4]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d4)}}" name="roll_guile-roll"
+        <button class="sheet-attribute-button" type="roll" value="&{template:attribute}  {{header=@{character_name}}} {{roll-type=Guile}} {{crit=[[19+@{guile}]]}} {{fail=[[2+@{guile}]]}} {{result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{guile}]]}} {{effortDie=[[1d3+1d@{equippedMasterList}]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d3)}} {{burn-rate=@{effortBurnRate}}}" name="roll_guile-roll"
         ></button><span class="sheet-attribute-text">GUILE</span><input class="sheet-attribute-input" type="number" name="attr_guile" value="0">
       </div>
       <div class="sheet-attribute-bottom-level">
@@ -87,7 +93,7 @@
     </div>
     <div class="sheet-attribute-bound-box">
       <div class="sheet-attribute-top-level">
-        <button class="sheet-attribute-button" type="roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=Presence}} {{crit=[[17+@{presence}]]}} {{fail=[[5+@{presence}]]}} {{result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{presence}]]}} {{effortDie=[[1d4]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d4)}}" name="roll_presence-roll"
+        <button class="sheet-attribute-button" type="roll" value="&{template:attribute}  {{header=@{character_name}}} {{roll-type=Presence}} {{crit=[[19+@{presence}]]}} {{fail=[[2+@{presence}]]}} {{result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{presence}]]}} {{effortDie=[[1d3+1d@{equippedMasterList}]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d3)}} {{burn-rate=@{effortBurnRate}}}" name="roll_presence-roll"
         ></button><span class="sheet-attribute-text">PRESENCE</span><input class="sheet-attribute-input" type="number" name="attr_presence" value="0">
       </div>
       <div class="sheet-attribute-bottom-level">
@@ -96,7 +102,7 @@
     </div>
     <div class="sheet-attribute-bound-box">
       <div class="sheet-attribute-top-level">
-        <button class="sheet-attribute-button" type="roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=Reason}} {{crit=[[17+@{reason}]]}} {{fail=[[5+@{reason}]]}} {{result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{reason}]]}} {{effortDie=[[1d4]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d4)}}" name="roll_reason-roll"></button><span class="sheet-attribute-text">REASON</span><input class="sheet-attribute-input" type="number" name="attr_reason" value="0">
+        <button class="sheet-attribute-button" type="roll" value="&{template:attribute}  {{header=@{character_name}}} {{roll-type=Reason}} {{crit=[[19+@{reason}]]}} {{fail=[[2+@{reason}]]}} {{result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{reason}]]}} {{effortDie=[[1d3+1d@{equippedMasterList}]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d3)}} {{burn-rate=@{effortBurnRate}}}" name="roll_reason-roll"></button><span class="sheet-attribute-text">REASON</span><input class="sheet-attribute-input" type="number" name="attr_reason" value="0">
       </div>
       <div class="sheet-attribute-bottom-level">
         intelligence, deduction, memory
@@ -110,8 +116,9 @@
     <button type="action" class="sheet-tab-button" name="act_inventory" >inventory</button>
     <button type="action" class="sheet-tab-button" name="act_relations" >bonds / notoriety</button>
     <button type="action" class="sheet-tab-button" name="act_magic" >magic</button>
+    <button type="action" class="sheet-tab-button" name="act_xpTab" >xp / notes</button>
   </div>
-  <input type='hidden' class='sheet-tabstoggle' name='attr_sheetTab'  value='traits'  />
+  <input type='hidden' class='sheet-tabstoggle' name='attr_sheetTab'  value='traits'/>
 
   <div class='sheet-traits'>
     <div class="sheet-traits-flexbox">
@@ -121,11 +128,12 @@
           <div class="sheet-traits-repeating-box">
             <div class="sheet-traits-title">
               <input placeholder="Trait Title" name="attr_activetraitname" type="text" class="sheet-traits-title-text">
-              <button class="sheet-trait-button" type="roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{activetraitname}}} {{crit=[[17+@{activetraitattribute}]]}} {{fail=[[5+@{activetraitattribute}]]}} {{result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{activetraitattribute}]]}} {{effortDie=[[@{activetraiteffortboost}d6kh1]]}} {{nextEffort=[Burn Effort](~repeating_activetraits_roll-Effort-1d6)}}" name="roll_trait-roll"></button><br>
+              <button class="sheet-trait-button" type="roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{activetraitname}}} {{crit=[[19+@{activetraitattribute}]]}} {{fail=[[2+@{activetraitattribute}]]}} {{result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{activetraitattribute}]]}} {{effortDie=[[1d(3+@{activetraiteffortboost})+1d@{equippedMasterList}]]}} {{nextEffort=[Burn Effort](~repeating_activetraits_roll-Effort-1d6)}} {{burn-rate=[[@{effortBurnRate}+@{activetraitburnboost}]]}}" name="roll_trait-roll"></button><br>
               <!-- hidden button -->
-              <button type="roll" class="sheet-hidden" name="roll_roll-Effort-1d6" value="&{template:attribute} {{effortDie=[[1d6]]}}"></button>
+              <button type="roll" class="sheet-hidden" name="roll_roll-Effort-1d6" value="&{template:attribute} {{effortDie=[[1d3]]}}"></button>
               <!--  -->
               <span class="sheet-traits-effort-boost-text">EFFORT BOOST: </span><input value="1" type="number" name="attr_activetraiteffortboost" class="sheet-traits-effort-boost-text" min="1" max="5">
+              <span class="sheet-traits-effort-boost-text">BURN BOOST: </span><input value="0" type="number" name="attr_activetraitburnboost" class="sheet-traits-effort-boost-text" min="0">
               <select name="attr_activetraitattribute" class="sheet-active-trait-attribute-selector">
                 <option value="@{agile}">AGILE</option>
                 <option value="@{aware}">AWARE</option>
@@ -135,9 +143,9 @@
                 <option value="@{reason}">REASON</option>
               </select>
             </div>
-            <div class="sheet-traits-description sheet-auto-expand">
+            <div class="sheet-traits-description sheet-auto-expand sheet-traits-description-text">
               <span name="attr_activetraitdescriptivetext"></span>
-              <textarea spellcheck="false" placeholder="Enter description here..." name="attr_activetraitdescriptivetext" class="sheet-traits-description-text"></textarea>
+              <textarea spellcheck="false" placeholder="Enter description here..." name="attr_activetraitdescriptivetext" class=""></textarea>
             </div>
           </div>
         </fieldset>
@@ -147,12 +155,13 @@
         <div class="sheet-traits-header-text">TRAITS</div>
         <fieldset class="repeating_passivetraits">
           <div class="sheet-traits-repeating-box">
-            <div class="sheet-traits-title">
-              <input placeholder="Trait Title" name="attr_passivetraitname" type="text" class="sheet-traits-title-text"><br>
+            <div class="sheet-traits-title sheet-traits-title-flexbox">
+              <input placeholder="Trait Title" name="attr_passivetraitname" type="text" class="sheet-traits-title-text">
+              <button type="roll" class="sheet-trait-passive-button" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{passivetraitname}}} {{textarea=@{passivetraitdescriptivetext}}}"></button>
             </div>
-            <div class="sheet-traits-description sheet-auto-expand">
+            <div class="sheet-traits-description sheet-auto-expand sheet-traits-description-text">
               <span name="attr_passivetraitdescriptivetext"></span>
-              <textarea spellcheck="false" placeholder="Enter description here..." name="attr_passivetraitdescriptivetext" class="sheet-traits-description-text"></textarea>
+              <textarea spellcheck="false" placeholder="Enter description here..." name="attr_passivetraitdescriptivetext" class=""></textarea>
             </div>
           </div>
         </fieldset>
@@ -167,11 +176,12 @@
           <div class="sheet-traits-title">
             <div class="sheet-header-trait-flexbox">
             <input placeholder="MAGIC TITLE" name="attr_magictraitname" type="text" class="sheet-traits-title-text">
-            <button class="sheet-magic-trait-button" type="roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{magictraitname}}} {{crit=[[17+@{magictraitattribute}]]}} {{fail=[[5+@{magictraitattribute}]]}} {{result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{magictraitattribute}]]}} {{effortDie=[[@{magictraiteffortboost}d6kh1]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d6)}}" name="roll_magic-roll"></button>
+            <button class="sheet-magic-trait-button" type="roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{magictraitname}}} {{crit=[[19+@{magictraitattribute}]]}} {{fail=[[2+@{magictraitattribute}]]}} {{result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{magictraitattribute}]]}} {{effortDie=[[1d(3+@{magictraiteffortboost})+1d@{equippedMasterList}]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d3)}} {{burn-rate=[[@{effortBurnRate}+@{magictraitburnboost}]]}}" name="roll_magic-roll"></button>
             </div>
             <!-- hidden button -->
-            <button type="roll" class="sheet-hidden" name="roll_roll-Effort-1d6" value="&{template:attribute} {{effortDie=[[1d6]]}}"></button>
+            <button type="roll" class="sheet-hidden" name="roll_roll-Effort-1d3" value="&{template:attribute} {{effortDie=[[1d3]]}}"></button>
             <span class="sheet-traits-effort-boost-text">EFFORT BOOST: </span><input value="1" type="number" name="attr_magictraiteffortboost" class="sheet-traits-effort-boost-text" min="1" max="5">
+            <span class="sheet-traits-effort-boost-text">BURN BOOST: </span><input value="0" type="number" name="attr_magictraitburnboost" class="sheet-traits-effort-boost-text" min="0">
             <select name="attr_magictraitattribute" class="sheet-active-trait-attribute-selector">
               <option value="@{agile}">AGILE</option>
               <option value="@{aware}">AWARE</option>
@@ -181,9 +191,9 @@
               <option value="@{reason}">REASON</option>
             </select>
           </div>
-          <div class="sheet-traits-description sheet-auto-expand">
+          <div class="sheet-traits-description sheet-auto-expand sheet-traits-description-text">
             <span name="attr_magictraitdescriptivetext"></span>
-            <textarea spellcheck="false" placeholder="Enter description here..." name="attr_magictraitdescriptivetext" class="sheet-traits-description-text"></textarea>
+            <textarea spellcheck="false" placeholder="Enter description here..." name="attr_magictraitdescriptivetext" class=""></textarea>
           </div>
         </div>
     </div>
@@ -203,7 +213,7 @@
                 <option value="-6">2 Effort</option>
                 <option value="-12">3 Effort</option>
                 <option value="-16">4 Effort</option>
-                <option value="-25">5 Effort</option>
+                <option value="-20">5 Effort</option>
               </select>
             </div>
             <div class="sheet-magic-range sheet-magic-individual-component">
@@ -211,9 +221,9 @@
                 <option value="0">Self</option>
                 <option value="2">Touch</option>
                 <option value="4">Throwing (1 zone)</option>
-                <option value="8">Pistol (2 zones)</option>
-                <option value="16">Rifle (3 zones)</option>
-                <option value="32">Sight (miles)</option>
+                <option value="8">Shooting (4 zones)</option>
+                <option value="16">Sight (miles)</option>
+                <option value="32">Far (states)</option>
               </select>
             </div>
             <div class="sheet-magic-duration sheet-magic-individual-component">
@@ -235,7 +245,7 @@
             </div>
             <div class="sheet-magic-casting-time sheet-magic-individual-component">
               <span class="sheet-magic-component-text">Casting Time</span><select name="attr_castingtime" class="sheet-magic-attribute-selector sheet-select-width-90">
-                <option value="1">Instant</option>
+                <option value="4">Instant (must have 1 Effort investment)</option>
                 <option value="-1">10 Minutes</option>
                 <option value="-2">1 Hour</option>
                 <option value="-4">8 Hours</option>
@@ -244,11 +254,11 @@
             </div>
             <div class="sheet-magic-power sheet-magic-individual-component">
               <span class="sheet-magic-component-text">Power</span><select name="attr_power" class="sheet-magic-attribute-selector sheet-select-width-260">
-                <option value="6">Fleeting (no damage, minor effect)</option>
-                <option value="8">Regular (no damage, moderate effect)</option>
-                <option value="10">Strong (1 damage, major effect)</option>
-                <option value="15">Powerful (2 damage, extreme effect)</option>
-                <option value="18">Tremendous (3 damage, epic effect)</option>
+                <option value="3">Fleeting (no damage, minor effect)</option>
+                <option value="6">Regular (no damage, moderate effect)</option>
+                <option value="9">Strong (1 damage, major effect)</option>
+                <option value="14">Powerful (2 damage, extreme effect)</option>
+                <option value="20">Tremendous (3 damage, epic effect)</option>
               </select>
             </div>
             <div class="sheet-magic-attribute sheet-magic-individual-component sheet-magic-misc">
@@ -258,15 +268,15 @@
               <span class="sheet-magic-component-text sheet-magic-DC-text">DC</span><input disabled="true" value="@{investment}+@{range}+@{duration}+@{area}+@{castingtime}+@{power}+@{magicmisc}" type="number" name="attr_spellDC" class="sheet-magic-DC-result">
             </div>
             <div class="sheet-magic-individual-component">
-              <button type="roll" class="sheet-magic-button" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{magic_name}}} {{crit=[[17+@{magictraitattribute}]]}} {{fail=[[5+@{magictraitattribute}]]}} {{result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{magictraitattribute}]]}} {{effortDie=[[@{magictraiteffortboost}d6kh1]]}} {{nextEffort=[Burn Effort](~repeating_magictraits_roll-Effort-1d6)}} {{DC=@{spellDC}}} {{textarea=@{spell_description}}}" name="roll_trait-roll"></button>
+              <button type="roll" class="sheet-magic-button" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{magic_name}}} {{crit=[[19+@{magictraitattribute}]]}} {{fail=[[2+@{magictraitattribute}]]}} {{result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{magictraitattribute}]]}} {{effortDie=[[1d(3+@{magictraiteffortboost})+1d@{equippedMasterList}]]}} {{nextEffort=[Burn Effort](~repeating_magic_roll-Effort-1d3)}} {{DC=@{spellDC}}} {{textarea=@{spell_description}}} {{burn-rate=[[@{effortBurnRate}+@{magictraitburnboost}]]}}" name="roll_trait-roll"></button>
               <!-- hidden button -->
-              <button type="roll" class="sheet-hidden" name="roll_roll-Effort-1d6" value="&{template:attribute} {{effortDie=[[1d6]]}}"></button>
+              <button type="roll" class="sheet-hidden" name="roll_roll-Effort-1d3" value="&{template:attribute} {{effortDie=[[1d3]]}}"></button>
               <!--  -->
             </div>
           </div>
-          <div class="sheet-magic-description sheet-magic-expand">
+          <div class="sheet-magic-description sheet-magic-expand sheet-relation-description-text">
             <span name="attr_spell_description"></span>
-            <textarea spellcheck="false" placeholder="Describe the spell and its effects..." name="attr_spell_description" class="sheet-relation-description-text"></textarea>
+            <textarea spellcheck="false" placeholder="Describe the spell and its effects..." name="attr_spell_description" class=""></textarea>
           </div>
         </div>
       </fieldset>
@@ -297,9 +307,9 @@
               </div>
 
             </div>
-            <div class="sheet-relations-textbox sheet-relations-description sheet-relation-expand">
+            <div class="sheet-relations-textbox sheet-relations-description sheet-relation-expand sheet-relation-description-text">
               <span name="attr_relation_description"></span>
-              <textarea spellcheck="false" placeholder="Describe the relationship..." name="attr_relation_description" class="sheet-relation-description-text"></textarea>
+              <textarea spellcheck="false" placeholder="Describe the relationship..." name="attr_relation_description" class=""></textarea>
             </div>
           </div>
         </fieldset>
@@ -325,9 +335,9 @@
                 <input type="text" name="attr_reputation" placeholder="Known for being..." class="sheet-notoriety-reputation">
               </div>
             </div>
-            <div class="sheet-relations-textbox sheet-relations-description sheet-relation-expand">
+            <div class="sheet-relations-textbox sheet-relations-description sheet-relation-expand sheet-relation-description-text">
               <span name="attr_notoriety_description"></span>
-              <textarea spellcheck="false" placeholder="List some of your exploits..." name="attr_notoriety_description" class="sheet-relation-description-text"></textarea>
+              <textarea spellcheck="false" placeholder="List some of your exploits..." name="attr_notoriety_description" class=""></textarea>
             </div>
           </div>
         </fieldset>
@@ -340,14 +350,30 @@
       <div class="sheet-inv-dollarbill-bounding-box">
         <div class="sheet-inv-money-dollarsign">$</div><input min="0" type="text" class="sheet-inv-money" name="attr_cashmoney">
       </div>
+      <div class="sheet-money-modifiers">
+        <div class="sheet-ledger-money sheet-ledger-money-pc">
+          <input type="text" name="attr_cashmoneyModifier" class="sheet-ledger-money-pc">
+        </div>
+        <div class="sheet-money-buttons">
+          <div class="sheet-gang-add-button"><button type="action" class="sheet-ledger-button" name="act_addmoney">PLUS</button></div>
+          <div class="sheet-gang-subtract-button"><button type="action" class="sheet-ledger-button" name="act_minusmoney">MINUS</button></div>
+        </div>
+      </div>
       <div class="sheet-upkeep-total">
         <button type="action" class="sheet-inv-upkeep-button" name="act_subtractUpkeep">
           <span>upkeep</span><span class="sheet-pictos"> } </span>$<span name="attr_upkeepTotal"></span>
         </button>
+        <button type="action" class="sheet-inv-upkeep-button" name="act_subtractmend">
+          <span>mend</span><span class="sheet-pictos"> } </span>$<span name="attr_mendTotal"></span>
+        </button>
+          <div class="sheet-mend-factor">MEND FACTOR<input class="sheet-mend-factor" type="text" name="attr_mendFactor" value="100">%</div>
         <!-- hidden inputs -->
         <input type="hidden" name="attr_upkeepWeapons">
         <input type="hidden" name="attr_upkeepItems">
         <input type="hidden" name="attr_upkeepTotal">
+        <input type="hidden" name="attr_mendWeapons">
+        <input type="hidden" name="attr_mendItems">
+        <input type="hidden" name="attr_mendTotal">
       </div>
     </div>
     <div class="sheet-left-col-bounding-box">
@@ -401,10 +427,10 @@
             <div class="sheet-inv-condition">
               <input type="hidden" class="sheet-inv-toggle" name="attr_show_flag" value="0">
                 <select name="attr_weaponCondition" class="sheet-inv-input sheet-inv-condition sheet-inv-remove-text-transform">
-                <option>PRISTINE, 1 free effort per adventure</option>
-                <option>WORN, no negative effects</option>
-                <option>FLAWED, burn rate 1</option>
-                <option>DAMAGED, burn rate 1 and disadvantage</option>
+                  <option value="4">PRISTINE: +1d4 to 1st Effort</option>
+                  <option value="3">WORN, +1d3 to 1st Effort</option>
+                  <option value="2">FLAWED, +1d2 to 1st Effort</option>
+                  <option value="1">DAMAGED, +1 to 1st Effort</option>
                 <option>RUINED: cannot use</option>
             </select>
             </div>
@@ -458,10 +484,10 @@
             <div class="sheet-inv-condition">
               <input type="hidden" class="sheet-inv-toggle" name="attr_show_flag" value="0">
                 <select name="attr_weaponCondition" class="sheet-inv-input sheet-inv-condition sheet-inv-remove-text-transform">
-                <option>PRISTINE, 1 free effort per adventure</option>
-                <option>WORN, no negative effects</option>
-                <option>FLAWED, burn rate 1</option>
-                <option>DAMAGED, burn rate 1 and disadvantage</option>
+                  <option value="4">PRISTINE: +1d4 to 1st Effort</option>
+                  <option value="3">WORN, +1d3 to 1st Effort</option>
+                  <option value="2">FLAWED, +1d2 to 1st Effort</option>
+                  <option value="1">DAMAGED, +1 to 1st Effort</option>
                 <option>RUINED: cannot use</option>
             </select>
             </div>
@@ -478,6 +504,52 @@
           </div>
         </fieldset>
       </div>
+    </div>
+    <!-- CONSUMABLE INVENTORY -->
+    <div class="sheet-left-col-bounding-box">
+      <div class="sheet-traits-header-text">CONSUMABLES</div>
+      <div class="sheet-black-border sheet-slate-bg">
+        <div class="sheet-steel-bg sheet-inv-flexbox sheet-inv-snow sheet-inv-consume-header">
+          <div class="sheet-inv-name-consume">Name</div>
+          <div class="sheet-inv-cost-consume">Cost (ea)</div>
+          <div class="sheet-inv-qty-consume">QTY</div>
+          <div class="sheet-inv-effects-consume">Effects</div>
+        </div>
+        <fieldset class="repeating_consume sheet-steel-bg">
+          <div class="sheet-slate-bg sheet-inv-flexbox sheet-inv-snow sheet-inv-repeating sheet-consume-row">
+            <div class="sheet-inv-name-consume">
+              <input type="text" name="attr_weaponName" class="sheet-inv-input-name-consume" placeholder="Equipment name...">
+            </div>
+            <div class="sheet-inv-cost-consume">
+              <span class="sheet-yellow-text">$ </span><input type="text" name="attr_weaponCost" class="sheet-inv-input sheet-inv-cost-consume" value="0">
+            </div>
+            <div class="sheet-inv-qty-consume">
+              <input type="number" name="attr_weaponQty" class="sheet-inv-input sheet-inv-qty-consume" value="0">
+            </div>
+            <div class="sheet-inv-effects-consume sheet-consume-flex">
+              <button class="sheet-inv-durability-roll" type="roll" name="roll_durability" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{weaponName}}} {{itemName=@{weaponName}}} {{textarea=@{equipNotes}}}"></button>
+              <input type="text" class="sheet-inv-consume-notes-text" name="attr_equipNotes" placeholder="Notes">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+  
+  <div class="sheet-xpTab">
+    <div class="sheet-traits-header-text">EXPERIENCE</div>
+    <div class="sheet-xp-bounding-box">
+      <div class="sheet-xp-section">
+        EXPERIENCE SPENT:<input type="number" class="sheet-xp-input" name="attr_xpSpent">
+      </div>
+      <div class="sheet-xp-section">
+        EXPERIENCE GAINED:<input type="number" class="sheet-xp-input" name="attr_xpGained">
+      </div>
+    </div>
+    <div class="sheet-traits-header-text">NOTES</div>
+    <div class="sheet-traits-description sheet-auto-expand sheet-notes">
+      <span name="attr_notes"></span>
+      <textarea spellcheck="false" placeholder="Take notes here..." name="attr_notes" class=""></textarea>
     </div>
   </div>
 </div>
@@ -497,11 +569,11 @@
       </div>
       <div class="sheet-npc-attribute-buttons">
         <div class="sheet-npc-attribute-buttons-button">
-          <button type="roll" class="sheet-npc-attribute-buttons-button-roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=physical test}} {{npc-ability-name=dynamic result}} {{crit=[[17+@{npc_physical}]]}} {{fail=[[5+@{npc_physical}]]}} {{npc-result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{npc_physical}]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d4)}} {{effortDie=[[1d4]]}}">ROLL
+          <button type="roll" class="sheet-npc-attribute-buttons-button-roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=physical test}} {{npc-ability-name=dynamic result}} {{crit=[[19+@{npc_physical}]]}} {{fail=[[2+@{npc_physical}]]}} {{npc-result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{npc_physical}]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d3)}} {{effortDie=[[1d3]]}} {{burn-rate=[[@{effortBurnRate}]]}}">ROLL
           </button>
         </div>
         <div class="sheet-npc-attribute-buttons-button">
-          <button type="roll" class="sheet-npc-attribute-buttons-button-roll sheet-npc-button-color-orange" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=physical test}} {{npc-ability-name=Static result}} {{crit=[[17+@{npc_physical}]]}} {{fail=[[5+@{npc_physical}]]}} {{npc-result=[[@{npc_physical}+13]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d4)}} {{effortDie=[[1d4]]}}">STATIC
+          <button type="roll" class="sheet-npc-attribute-buttons-button-roll sheet-npc-button-color-orange" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=physical test}} {{npc-ability-name=Static result}} {{npc-result=[[@{npc_physical}+13]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d3)}} {{effortDie=[[1d3]]}} {{burn-rate=[[@{effortBurnRate}]]}}">STATIC
           </button>
         </div>
       </div>
@@ -515,11 +587,11 @@
       </div>
       <div class="sheet-npc-attribute-buttons">
         <div class="sheet-npc-attribute-buttons-button">
-          <button type="roll" class="sheet-npc-attribute-buttons-button-roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=social test}} {{npc-ability-name=dynamic result}} {{crit=[[17+@{npc_social}]]}} {{fail=[[5+@{npc_social}]]}} {{npc-result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{npc_social}]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d4)}} {{effortDie=[[1d4]]}}">ROLL
+          <button type="roll" class="sheet-npc-attribute-buttons-button-roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=social test}} {{npc-ability-name=dynamic result}} {{crit=[[19+@{npc_social}]]}} {{fail=[[2+@{npc_social}]]}} {{npc-result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{npc_social}]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d3)}} {{effortDie=[[1d3]]}} {{burn-rate=[[@{effortBurnRate}]]}}">ROLL
           </button>
         </div>
         <div class="sheet-npc-attribute-buttons-button">
-          <button type="roll" class="sheet-npc-attribute-buttons-button-roll sheet-npc-button-color-orange" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=social test}} {{npc-ability-name=static result}} {{crit=[[17+@{npc_social}]]}} {{fail=[[5+@{npc_social}]]}} {{npc-result=[[@{npc_social}+13]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d4)}} {{effortDie=[[1d4]]}}">STATIC
+          <button type="roll" class="sheet-npc-attribute-buttons-button-roll sheet-npc-button-color-orange" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=social test}} {{npc-ability-name=Static result}} {{npc-result=[[@{npc_social}+13]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d3)}} {{effortDie=[[1d3]]}} {{burn-rate=[[@{effortBurnRate}]]}}">STATIC
           </button>
         </div>
       </div>
@@ -533,47 +605,72 @@
       </div>
       <div class="sheet-npc-attribute-buttons">
         <div class="sheet-npc-attribute-buttons-button">
-          <button type="roll" class="sheet-npc-attribute-buttons-button-roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=mental test}} {{npc-ability-name=dynamic result}} {{crit=[[17+@{npc_mental}]]}} {{fail=[[5+@{npc_mental}]]}} {{npc-result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{npc_mental}]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d4)}} {{effortDie=[[1d4]]}}">ROLL
+          <button type="roll" class="sheet-npc-attribute-buttons-button-roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=mental test}} {{npc-ability-name=dynamic result}} {{crit=[[19+@{npc_mental}]]}} {{fail=[[2+@{npc_mental}]]}} {{npc-result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{npc_mental}]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d3)}} {{effortDie=[[1d3]]}} {{burn-rate=[[@{effortBurnRate}]]}}">ROLL
           </button>
         </div>
         <div class="sheet-npc-attribute-buttons-button">
-          <button type="roll" class="sheet-npc-attribute-buttons-button-roll sheet-npc-button-color-orange" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=mental test}} {{npc-ability-name=static result}} {{crit=[[17+@{npc_mental}]]}} {{fail=[[5+@{npc_mental}]]}} {{npc-result=[[@{npc_mental}+13]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d4)}} {{effortDie=[[1d4]]}}">STATIC
+          <button type="roll" class="sheet-npc-attribute-buttons-button-roll sheet-npc-button-color-orange" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=mental test}} {{npc-ability-name=Static result}} {{npc-result=[[@{npc_mental}+13]]}} {{nextEffort=[Burn Effort](~roll-Effort-1d3)}} {{effortDie=[[1d3]]}} {{burn-rate=[[@{effortBurnRate}]]}}">STATIC
           </button>
         </div>
       </div>
     </div>
   </div>
-  <div class="sheet-npc-effort">
-    <div class="sheet-npc-effort-text">
-      SCENE EFFORT:
+  <div class="sheet-npc-effort-flex">
+    <div class="sheet-npc-effort">
+      <div class="sheet-npc-effort-text">
+        EFFORT:
+      </div>
+      <div class="sheet-npc-effort-formula">
+        <input class="sheet-npc-effort-input" name="attr_npcCurrentEffort" type="number" value="0">
+      </div>
     </div>
-    <div class="sheet-npc-effort-formula">
-      <input class="sheet-npc-effort-input" name="attr_effortFormula" type="text" value="1d3">
+    <div class="sheet-npc-effort">
+      <div class="sheet-npc-effort-text">
+        BURN:
+      </div>
+      <div class="sheet-npc-effort-formula">
+        <input class="sheet-npc-effort-input" name="attr_effortBurnRate" type="number" value="2">
+      </div>
+    </div>
+    <div class="sheet-npc-effort">
+      <div class="sheet-npc-effort-text">
+        RESET:
+      </div>
+      <div class="sheet-npc-effort-formula">
+        <input class="sheet-npc-effort-input" name="attr_effortFormula" type="text" value="1d3">
+      </div>
     </div>
   </div>
   <div class="sheet-npc-traits">
     <div class="sheet-npc-traits-active">
       <fieldset class="repeating_npcactiveraits">
-        <div class="sheet-npc-trait-bounding-box">
-          <div class="sheet-npc-traits-title">
-            <input type="text" class="sheet-npc-traits-title-input" placeholder="Talent name" name="attr_npcTalent">
-          </div>
-          <div class="sheet-npc-traits-boost">
-            <input type="number" class="sheet-npc-traits-boost-input" value="1" name="attr_npcBoost" min="0">
-          </div>
-          <div class="sheet-npc-traits-mod">
-            <input type="number" class="sheet-npc-traits-mod-input" value="0" name="attr_npcMod">
-          </div>
-          <div class="sheet-npc-traits-trait-buttons">
-            <div class="sheet-npc-attribute-buttons-button">
-              <button type="roll" name="roll_npcTrait" class="sheet-npc-attribute-buttons-button-roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{npcTalent}}} {{npc-ability-name=dynamic result}} {{crit=[[17+@{npcMod}]]}} {{fail=[[5+@{npcMod}]]}} {{npc-result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{npcMod}]]}} {{nextEffort=[Burn Effort](~repeating_npcactiveraits_roll-Effort-1d6)}} {{effortDie=[[@{npcBoost}d6kh1]]}}">ROLL</button>
-              <!-- hidden button -->
-              <button type="roll" class="sheet-hidden" name="roll_roll-Effort-1d6" value="&{template:attribute} {{effortDie=[[1d6]]}}"></button>
-            </div>
-            <div class="sheet-npc-attribute-buttons-button">
-              <button type="roll" class="sheet-npc-attribute-buttons-button-roll sheet-npc-button-color-orange" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{npcTalent}}} {{npc-ability-name=static result}} {{crit=[[17+@{npcMod}]]}} {{fail=[[5+@{npcMod}]]}} {{npc-result=[[@{npcMod}+13]]}} {{nextEffort=[Burn Effort](~repeating_npcactiveraits_roll-Effort-1d6)}} {{effortDie=[[@{npcBoost}d6kh1]]}}">STATIC</button>
+        <div class="sheet-npc-trait-bounding-box-col">
+          <div class="sheet-npc-trait-bounding-box-inner">
+            <div class="sheet-npc-traits-title">
+              <input type="text" class="sheet-npc-traits-title-input" placeholder="Talent name" name="attr_npcTalent">
             </div>
           </div>
+          <div class="sheet-npc-trait-bounding-box-inner">
+            <div class="sheet-npc-traits-mod">
+              <input type="text" class="sheet-npc-traits-effortdice-input" value="1d4" name="attr_npcEffortDice" min="0">
+            </div>
+            <div class="sheet-npc-traits-mod">
+              +<input type="number" class="sheet-npc-traits-mod-input" value="0" name="attr_npcMod">
+            </div>
+            <div class="sheet-npc-traits-mod sheet-npc-traits-mod-burnRate">
+              +<input type="number" class="sheet-npc-traits-burn-input" value="0" name="attr_npcBurnBoost">
+            </div>
+            <div class="sheet-npc-traits-trait-buttons">
+              <div class="sheet-npc-attribute-buttons-button">
+                <button type="roll" name="roll_npcTrait" class="sheet-npc-attribute-buttons-button-roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{npcTalent}}} {{npc-ability-name=dynamic result}} {{crit=[[19+@{npcMod}]]}} {{fail=[[2+@{npcMod}]]}} {{npc-result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{npcMod}]]}} {{nextEffort=[Burn Effort](~repeating_npcactiveraits_roll-Effort-1d6)}} {{effortDie=[[@{npcEffortDice}]]}} {{burn-rate=[[@{effortBurnRate}+@{npcBurnBoost}]]}}">ROLL</button>
+                <!-- hidden button -->
+                <button type="roll" class="sheet-hidden" name="roll_roll-Effort-1d6" value="&{template:attribute} {{effortDie=[[1d3]]}}"></button>
+              </div>
+              <div class="sheet-npc-attribute-buttons-button">
+                <button type="roll" class="sheet-npc-attribute-buttons-button-roll sheet-npc-button-color-orange" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{npcTalent}}} {{npc-ability-name=static result}} {{npc-result=[[@{npcMod}+13]]}} {{nextEffort=[Burn Effort](~repeating_npcactiveraits_roll-Effort-1d6)}} {{effortDie=[[@{npcEffortDice}]]}} {{burn-rate=[[@{effortBurnRate}+@{npcBurnBoost}]]}}">STATIC</button>
+              </div>
+            </div>
+        </div>
         </div>
       </fieldset>
     </div>
@@ -582,7 +679,7 @@
         <div class="sheet-npc-trait-bounding-box-col">
           <div class="sheet-npc-trait-bounding-box-inner">
             <div class="sheet-npc-traits-title">
-              <input type="text" class="sheet-npc-traits-title-input" placeholder="Talent name" name="attr_npcTalent">
+              <input type="text" class="sheet-npc-traits-title-input sheet-npc-traits-title-passive" placeholder="Talent name" name="attr_npcTalent">
             </div>
             <div class="sheet-npc-traits-trait-buttons">
               <div class="sheet-npc-attribute-buttons-button">
@@ -602,108 +699,89 @@
   <input type="hidden" name="attr_npcMagicTab" value="false" class="sheet-npcMagicTab">
   <div class="sheet-npc-spells">
     <div class="sheet-traits-header-text">SPELLS</div>
-    <div class="sheet-npc-trait-bounding-box">
-      <div class="sheet-npc-traits-title">
-        <input type="text" class="sheet-npc-traits-title-input" placeholder="Talent name" name="attr_npcMagicTalent">
-      </div>
-      <div class="sheet-npc-traits-boost">
-        <input type="number" class="sheet-npc-traits-boost-input" value="1" name="attr_npcMagicBoost" min="0">
-      </div>
-      <div class="sheet-npc-traits-mod">
-        <input type="number" class="sheet-npc-traits-mod-input" value="0" name="attr_npcMagicMod">
-      </div>
-      <div class="sheet-npc-traits-trait-buttons">
-        <div class="sheet-npc-attribute-buttons-button">
-          <button type="roll" name="roll_npcTrait" class="sheet-npc-attribute-buttons-button-roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{npcMagicTalent}}} {{npc-ability-name=dynamic result}} {{crit=[[17+@{npcMagicMod}]]}} {{fail=[[5+@{npcMagicMod}]]}} {{npc-result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{npcMagicMod}]]}} {{nextEffort=[Burn Effort](~repeating_npcactiveraits_roll-Effort-1d6)}} {{effortDie=[[@{npcMagicBoost}d6kh1]]}}">ROLL</button>
-          <!-- hidden button -->
-          <button type="roll" class="sheet-hidden" name="roll_roll-Effort-1d6" value="&{template:attribute} {{effortDie=[[1d6]]}}"></button>
+    <div class="sheet-npc-traits-active">
+      <div class="sheet-npc-trait-bounding-box-col">
+        <div class="sheet-npc-trait-bounding-box-inner">
+          <div class="sheet-npc-traits-title">
+            <input type="text" class="sheet-npc-traits-title-input" placeholder="Talent name" name="attr_npcTalent">
+          </div>
         </div>
-        <div class="sheet-npc-attribute-buttons-button">
-          <button type="roll" class="sheet-npc-attribute-buttons-button-roll sheet-npc-button-color-orange" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{npcMagicTalent}}} {{npc-ability-name=static result}} {{crit=[[17+@{npcMagicMod}]]}} {{fail=[[5+@{npcMagicMod}]]}} {{npc-result=[[@{npcMagicMod}+13]]}} {{nextEffort=[Burn Effort](~repeating_npcactiveraits_roll-Effort-1d6)}} {{effortDie=[[@{npcMagicBoost}d6kh1]]}}">STATIC</button>
+        <div class="sheet-npc-trait-bounding-box-inner">
+          <div class="sheet-npc-traits-mod">
+            <input type="text" class="sheet-npc-traits-effortdice-input" value="1d4" name="attr_npcEffortDice" min="0">
+          </div>
+          <div class="sheet-npc-traits-mod">
+            +<input type="number" class="sheet-npc-traits-mod-input" value="0" name="attr_npcMod">
+          </div>
+          <div class="sheet-npc-traits-mod sheet-npc-traits-mod-burnRate">
+            +<input type="number" class="sheet-npc-traits-burn-input" value="0" name="attr_npcBurnBoost">
+          </div>
+          <div class="sheet-npc-traits-trait-buttons">
+            <div class="sheet-npc-attribute-buttons-button">
+              <button type="roll" name="roll_npcTrait" class="sheet-npc-attribute-buttons-button-roll" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{npcTalent}}} {{npc-ability-name=dynamic result}} {{crit=[[19+@{npcMod}]]}} {{fail=[[2+@{npcMod}]]}} {{npc-result=[[?{Roll Type|Normal,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1}+@{npcMod}]]}} {{nextEffort=[Burn Effort](~repeating_npcactiveraits_roll-Effort-1d6)}} {{effortDie=[[@{npcEffortDice}]]}} {{burn-rate=[[@{effortBurnRate}+@{npcBurnBoost}]]}}">ROLL</button>
+              <!-- hidden button -->
+              <button type="roll" class="sheet-hidden" name="roll_roll-Effort-1d6" value="&{template:attribute} {{effortDie=[[1d3]]}}"></button>
+            </div>
+            <div class="sheet-npc-attribute-buttons-button">
+              <button type="roll" class="sheet-npc-attribute-buttons-button-roll sheet-npc-button-color-orange" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{npcTalent}}} {{npc-ability-name=static result}} {{npc-result=[[@{npcMod}+13]]}} {{nextEffort=[Burn Effort](~repeating_npcactiveraits_roll-Effort-1d6)}} {{effortDie=[[@{npcEffortDice}]]}} {{burn-rate=[[@{effortBurnRate}+@{npcBurnBoost}]]}}">STATIC</button>
+            </div>
+          </div>
         </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="sheet-cheatsheet">
+  <div class="sheet-traits-header-text">LEDGER</div>
+  <div class="sheet-ledgerarea">
+    <div class="sheet-ledger-box">
+      <div class="sheet-ledger-header">
+        GANG SAVINGS
+      </div>
+      <div class="sheet-inv-dollarbill-bounding-box">
+        <div class="sheet-inv-money-dollarsign">$</div><input min="0" type="text" class="sheet-inv-money" name="attr_gangsavings">
+      </div>
+      <div class="sheet-ledger-money">
+        <input type="text" name="attr_gangsavingsModifier" class="sheet-ledger-money sheet-ledger-calc">
+      </div>
+      <div class="sheet-gang-buttons">
+        <div class="sheet-gang-add-button"><button type="action" class="sheet-ledger-button" name="act_addgang">PLUS</button></div>
+        <div class="sheet-gang-subtract-button"><button type="action" class="sheet-ledger-button" name="act_minusgang">MINUS</button></div>
       </div>
     </div>
-    <div class="sheet-magic-flexbox">
-      <fieldset class="repeating_magic">
-        <div class="sheet-half-size-repeater sheet-black-border sheet-magic-bounding-box">
-          <div class="sheet-magic-header sheet-slate-bg">
-            <input type="text" name="attr_magic_name" class="sheet-magic-name-text sheet-font-18 sheet-font-snow sheet-uppercase" placeholder="Spell name...">
-          </div>
-          <div class="sheet-uppercase sheet-magic-components sheet-slate-bg sheet-font-extra-dark-smoke sheet-magic-component-flexbox">
-            <div class="sheet-magic-effort-investment sheet-magic-individual-component">
-              <span class="sheet-magic-component-text">Investment</span><select name="attr_investment" class="sheet-magic-attribute-selector sheet-select-width-70">
-                <option value="0">0 Effort</option>
-                <option value="-3">1 Effort</option>
-                <option value="-6">2 Effort</option>
-                <option value="-12">3 Effort</option>
-                <option value="-16">4 Effort</option>
-                <option value="-25">5 Effort</option>
-              </select>
-            </div>
-            <div class="sheet-magic-range sheet-magic-individual-component">
-              <span class="sheet-magic-component-text">Range</span><select name="attr_range" class="sheet-magic-attribute-selector sheet-select-width-130">
-                <option value="0">Self</option>
-                <option value="2">Touch</option>
-                <option value="4">Throwing (1 zone)</option>
-                <option value="8">Pistol (2 zones)</option>
-                <option value="16">Rifle (3 zones)</option>
-                <option value="32">Sight (miles)</option>
-              </select>
-            </div>
-            <div class="sheet-magic-duration sheet-magic-individual-component">
-              <span class="sheet-magic-component-text">Duration</span><select name="attr_duration" class="sheet-magic-attribute-selector sheet-select-width-100">
-                <option value="1">Seconds</option>
-                <option value="3">1-20 Minutes</option>
-                <option value="6">1-8 Hours</option>
-                <option value="12">1-4 Days</option>
-              </select>
-            </div>
-            <div class="sheet-magic-area sheet-magic-individual-component">
-              <span class="sheet-magic-component-text">Area</span><select name="attr_area" class="sheet-magic-attribute-selector sheet-select-width-180">
-                <option value="1">1 Target</option>
-                <option value="2">2-4 Targets (a wagon)</option>
-                <option value="4">5-10 Targets (a room)</option>
-                <option value="16">11-30 Targets (a saloon)</option>
-                <option value="32">31-300 Targets (a town)</option>
-              </select>
-            </div>
-            <div class="sheet-magic-casting-time sheet-magic-individual-component">
-              <span class="sheet-magic-component-text">Casting Time</span><select name="attr_castingtime" class="sheet-magic-attribute-selector sheet-select-width-90">
-                <option value="1">Instant</option>
-                <option value="-1">10 Minutes</option>
-                <option value="-2">1 Hour</option>
-                <option value="-4">8 Hours</option>
-                <option value="-8">1 Day</option>
-              </select>
-            </div>
-            <div class="sheet-magic-power sheet-magic-individual-component">
-              <span class="sheet-magic-component-text">Power</span><select name="attr_power" class="sheet-magic-attribute-selector sheet-select-width-260">
-                <option value="6">Fleeting (no damage, minor effect)</option>
-                <option value="8">Regular (no damage, moderate effect)</option>
-                <option value="10">Strong (1 damage, major effect)</option>
-                <option value="15">Powerful (2 damage, extreme effect)</option>
-                <option value="18">Tremendous (3 damage, epic effect)</option>
-              </select>
-            </div>
-            <div class="sheet-magic-attribute sheet-magic-individual-component sheet-magic-misc">
-              <span class="sheet-magic-component-text">Misc Mod</span><input type="number" value="0" name="attr_magicmisc" class="sheet-magic-attribute-selector sheet-select-width-80 sheet-misc-mod-text">
-            </div>
-            <div class="sheet-magic-DC sheet-magic-individual-component">
-              <span class="sheet-magic-component-text sheet-magic-DC-text">DC</span><input disabled="true" value="@{investment}+@{range}+@{duration}+@{area}+@{castingtime}+@{power}+@{magicmisc}" type="number" name="attr_spellDC" class="sheet-magic-DC-result">
-            </div>
-            <div class="sheet-magic-individual-component">
-              <button type="roll" class="sheet-magic-button" value="&{template:attribute} {{header=@{character_name}}} {{roll-type=@{magic_name}}} {{crit=[[17+@{npcMagicMod}]]}} {{fail=[[5+@{npcMagicMod}]]}} {{result=[[?{Roll Type|Normal,2d10|Advantage,3d10kh2|Disadvantage,3d10kl2}+@{npcMagicMod}]]}} {{effortDie=[[@{npcMagicBoost}d6kh1]]}} {{nextEffort=[Burn Effort](~repeating_magictraits_roll-Effort-1d6)}} {{DC=@{spellDC}}} {{textarea=@{spell_description}}}" name="roll_trait-roll"></button>
-              <!-- hidden button -->
-              <button type="roll" class="sheet-hidden" name="roll_roll-Effort-1d6" value="&{template:attribute} {{effortDie=[[1d6]]}}"></button>
-              <!--  -->
-            </div>
-          </div>
-          <div class="sheet-magic-description sheet-magic-expand">
-            <span name="attr_spell_description"></span>
-            <textarea spellcheck="false" placeholder="Describe the spell..." name="attr_spell_description" class="sheet-relation-description-text"></textarea>
-          </div>
+    <div class="sheet-ledger-box">
+      <div class="sheet-ledger-header">
+        CURRENT HAUL
+      </div>
+      <div class="sheet-inv-dollarbill-bounding-box">
+        <div class="sheet-inv-money-dollarsign">$</div><input min="0" type="text" class="sheet-inv-money" name="attr_haulsavings">
+      </div>
+      <div class="sheet-ledger-money">
+        <input type="text" name="attr_haulsavingsModifier" class="sheet-ledger-money sheet-ledger-calc">
+      </div>
+      <div class="sheet-gang-buttons">
+        <div class="sheet-gang-add-button"><button type="action" class="sheet-ledger-button" name="act_addhaul">PLUS</button></div>
+        <div class="sheet-gang-subtract-button"><button type="action" class="sheet-ledger-button" name="act_minushaul">MINUS</button></div>
+      </div>
+    </div>
+    <div class="sheet-ledger-box">
+      <div class="sheet-ledger-header">
+        TOTAL OUTLAWS
+      </div>
+      <div class="sheet-total-outlaws">
+        <input type="number" name="attr_outlawsOnMission" class="sheet-total-outlaws">
+      </div>
+      <div class="sheet-gang-splitsection">
+        <div class="sheet-gang-splitter">
+          <span class="sheet-gang-to-split">GANG SHARE</span>
+          <input class="sheet-gang-to-split" readonly name="attr_cashToGang">
         </div>
-      </fieldset>
+        <div class="sheet-gang-splitter">
+          <span class="sheet-gang-to-split">PER OUTLAW</span>
+          <input class="sheet-gang-to-split" readonly name="attr_cashToOutlaw">
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -714,7 +792,7 @@
 
 
 <!-- HIDDEN ROLL BUTTONS -->
-<button type="roll" class="sheet-hidden" name="roll_roll-Effort-1d4" value="&{template:attribute} {{effortDie=[[1d4]]}}"></button>
+<button type="roll" class="sheet-hidden" name="roll_roll-Effort-1d3" value="&{template:attribute} {{effortDie=[[1d3]]}}"></button>
 
 <!-- Roll TEMPLATES -->
 <rolltemplate class="sheet-rolltemplate-attribute">
@@ -726,8 +804,10 @@
 
     
     {{#textarea}}
-    <div class="sheet-template-row sheet-template-textarea">
-      {{textarea}}
+    <div class="sheet-template-row">
+      <div class="sheet-template-textarea">
+        {{textarea}}
+      </div>
     </div>
     {{/textarea}}
     {{#DC}}
@@ -757,8 +837,8 @@
     {{#result}}
     <div class="sheet-template-row sheet-template-roll-results">
       <div>ROLL RESULT 
-        {{#rollGreater() result crit}}<br><span class="sheet-template-crit">CRITICAL SUCCESS<br>Gain 3 Effort</span>{{/rollGreater() result crit}}
-        {{#rollLess() result fail}}<br><span class="sheet-template-fail">CRITICAL FAILURE<br>Lose All Effort</span>{{/rollLess() result fail}}
+        {{#rollWasCrit() result}}<br><span class="sheet-template-crit">CRITICAL SUCCESS<br>Gain 3 Effort</span>{{/rollWasCrit() result}}
+        {{#rollWasFumble() result}}<br><span class="sheet-template-fail">CRITICAL FAILURE<br>Lose All Effort</span>{{/rollWasFumble() result}}
       </div><div>{{result}}</div>
     </div>
     {{/result}}
@@ -776,7 +856,9 @@
 
     {{#effortDie}}
     <div class="sheet-template-row sheet-template-pink">
-      <div>EFFORT DIE</div><div>{{effortDie}}</div>
+      <div><div>EFFORT DIE</div>
+      <div class="sheet-template-burn-rate">{{#burn-rate}}Burn Rate: {{burn-rate}}{{/burn-rate}}</div></div>
+      <div>{{effortDie}}</div>
     </div>
     {{/effortDie}}
     {{#nextEffort}}
@@ -797,7 +879,7 @@
 
   // ACTUAL CODE
 
-  const buttonlist = ["traits","magic","relations","inventory"];
+  const buttonlist = ["traits","magic","relations","inventory","xpTab"];
   buttonlist.forEach(button => {
       on(`clicked:${button}`, function() {
           setAttrs({
@@ -847,6 +929,21 @@
     });
   })
 
+  on ("clicked:subtractMend", function() {
+    getAttrs(["cashmoney","mendTotal"], function(values) {
+  
+      let cash = parseFloat(values.cashmoney);
+      let mend = parseFloat(values.mendTotal);
+  
+      let newcash = cash - mend;
+      let newercash = newcash.toFixed(2);
+
+      setAttrs({
+        "cashmoney": newercash
+      });
+    });
+  })
+
   on ("change:upkeepItems change:upkeepWeapons", function() {
     getAttrs(["upkeepItems","upkeepWeapons","upkeepTotal"], function(values) {
   
@@ -857,6 +954,23 @@
 
       setAttrs({
         "upkeepTotal": decimalTotal
+      });
+    });
+  })
+
+  on ("change:mendItems change:mendWeapons change:mendFactor", function() {
+    getAttrs(["mendItems","mendWeapons","mendTotal","mendFactor"], function(values) {
+  
+      let items = parseFloat(values.mendItems);
+      let weapons = parseFloat(values.mendWeapons);
+      let factor = parseInt(values.mendFactor);
+      factor = factor / 100;
+      let total = items + weapons;
+      total = total * factor;
+      let decimalTotal = total.toFixed(2);
+  
+      setAttrs({
+        "mendTotal": decimalTotal
       });
     });
   })
@@ -902,6 +1016,126 @@
       });
     });
   });
+
+  // BUILD EQUIPPED WEAPON LIST
+  on('change:repeating_weapons', () => {
+    getSectionIDs('weapons', (idarray) => {
+      getAttrs(idarray.map((id) => `repeating_weapons_${id}_show_flag`), (values) => {
+        
+        let getAttrsArray = [];
+        let checkedArray = [];
+        
+        const valuesArray = Object.keys(values);
+        
+        for (let index = 0; index < valuesArray.length; index++) {
+          const switchState = values[valuesArray[index]]
+          if (switchState == "1") {
+        
+            const result = valuesArray[index];
+            const regex = /[^_]*_[^_]*_[^_]*/g;
+            const found = result.match(regex);
+        
+            const weaponName = found[0].concat("_weaponName");
+            const weaponCondition = found[0].concat("_weaponCondition");
+            getAttrsArray.push(weaponName,weaponCondition);
+            checkedArray.push(found[0]);
+          }
+        }
+        
+        
+        const newValues = {"repeating_weapons_-mnky9h6tanq6zglkcrh_weaponName": "Papa's shotgun", "repeating_weapons_-mnky9h6tanq6zglkcrh_weaponCondition": "WORN, no negative effects"}
+        
+        //checkedArray is ["repeating_weapons_-mnky9h6tanq6zglkcrh"]
+        let attributeString = "?{Weapon?|None,0"
+        
+        checkedArray.forEach(function(element) {
+          let weaponName = element.concat("_weaponName");
+          let weaponCondition = element.concat("_weaponCondition");
+          attributeString = attributeString.concat("|","@{",weaponName,"}",",","@{",weaponCondition,"}")
+        })
+        
+        attributeString = attributeString.concat("}");
+        
+        
+        setAttrs({
+          "equippedWeaponList": attributeString
+        });
+      });
+    });
+  });
+
+  // BUILD EQUIPPED ITEM LIST
+  on('change:repeating_items', () => {
+    getSectionIDs('items', (idarray) => {
+      getAttrs(idarray.map((id) => `repeating_items_${id}_show_flag`), (values) => {
+        
+        let getAttrsArray = [];
+        let checkedArray = [];
+        
+        const valuesArray = Object.keys(values);
+        
+        for (let index = 0; index < valuesArray.length; index++) {
+          const switchState = values[valuesArray[index]]
+          if (switchState == "1") {
+        
+            const result = valuesArray[index];
+            const regex = /[^_]*_[^_]*_[^_]*/g;
+            const found = result.match(regex);
+        
+            const weaponName = found[0].concat("_weaponName");
+            const weaponCondition = found[0].concat("_weaponCondition");
+            getAttrsArray.push(weaponName,weaponCondition);
+            checkedArray.push(found[0]);
+          }
+        }
+        
+              
+        //checkedArray is ["repeating_weapons_-mnky9h6tanq6zglkcrh"]
+        let attributeString = "?{Item?|None,0"
+        
+        checkedArray.forEach(function(element) {
+          let weaponName = element.concat("_weaponName");
+          let weaponCondition = element.concat("_weaponCondition");
+          attributeString = attributeString.concat("|","@{",weaponName,"}",",","@{",weaponCondition,"}")
+        })
+        
+        attributeString = attributeString.concat("}");
+        
+        
+        setAttrs({
+          "equippedItemList": attributeString
+        });
+      });
+    });
+  });
+
+  on('change:equippedItemList change:equippedWeaponList', () => {
+    getAttrs(["equippedItemList","equippedWeaponList"], function(values) {
+      console.log(values)
+  
+      let masterAttributeString = "?{Equipment?|None,0";
+  
+      const regex = /\|@.*(?=})/g
+      
+      let filteredWeapons = values["equippedWeaponList"].match(regex);
+      let filteredItems = values["equippedItemList"].match(regex);
+  
+      if (filteredWeapons == null) {
+        filteredWeapons = ""
+      };
+  
+      if (filteredItems == null) {
+        filteredItems = ""
+      };
+      
+      masterAttributeString = masterAttributeString.concat(filteredWeapons,filteredItems,"}");
+  
+      setAttrs({
+        "equippedMasterList": masterAttributeString
+      });
+    });
+  });
+
 
   on('change:repeating_weapons', function() {
     getAttrs(["repeating_weapons_weaponUpkeep","repeating_weapons_weaponMend"], function(v) {
@@ -956,6 +1190,32 @@
     });
   });
 
+  // MONEY TO DECIMAL
+  on('change:haulsavings', function() {
+    getAttrs(["haulsavings"], function(v) {
+
+      let haulsavings = parseFloat(v.haulsavings);
+      let decimalMoney = haulsavings.toFixed(2);
+
+      setAttrs({
+        "haulsavings": decimalMoney
+      });
+    });
+  });
+  
+  // MONEY TO DECIMAL
+  on('change:gangsavings', function() {
+    getAttrs(["gangsavings"], function(v) {
+
+      let gangsavings = parseFloat(v.gangsavings);
+      let decimalMoney = gangsavings.toFixed(2);
+
+      setAttrs({
+        "gangsavings": decimalMoney
+      });
+    });
+  });
+
   on('clicked:repeating_items:show', function() {
     getAttrs(["repeating_items_show_flag"], function(v) {
       setAttrs({
@@ -971,10 +1231,22 @@
       let upkeep = mend * 0.2;
 
       let decimalUpkeep = upkeep.toFixed(2);
-      
 
       setAttrs({
         "repeating_items_weaponUpkeep": decimalUpkeep
+      });
+    });
+  });
+
+  on('change:repeating_consume', function() {
+    getAttrs(["repeating_consume_weaponCost"], function(v) {
+  
+      let cost = parseFloat(v.repeating_consume_weaponCost);
+  
+      let decimalCost = cost.toFixed(2);
+  
+      setAttrs({
+        "repeating_consume_weaponCost": decimalCost
       });
     });
   });
@@ -1013,6 +1285,14 @@ on('change:repeating_items', function() {
 	repeatingSum("upkeepItems","items",["weaponUpkeep","show_flag"]);
 });
 
+on('change:repeating_weapons', function() {
+	repeatingSum("mendWeapons","weapons",["weaponmend","show_flag"]);
+});
+
+on('change:repeating_items', function() {
+	repeatingSum("mendItems","items",["weaponmend","show_flag"]);
+});
+
 // CORE PERCENTAGE CALCULATORS
 on("change:healthCore", function() {
   getAttrs(["healthCore","healthCore_max"], function(values) {
@@ -1029,6 +1309,210 @@ on("change:healthCore", function() {
     setAttrs({
       "healthCorePercentage": healthPercentage
     })
+  });
+});
+
+// CORE PERCENTAGE CALCULATORS
+on("change:effortCore", function() {
+  getAttrs(["effortCore","effortCore_max"], function(values) {
+    let effort = parseFloat(values.effortCore);
+    let effortMax = parseFloat(values.effortCore_max);
+    let effortPercentage = (effort/effortMax)*100
+    
+    effortPercentage = Math.ceil(effortPercentage/5)*5
+
+    if (effortPercentage > 100) {
+      effortPercentage = 110
+    }
+
+    setAttrs({
+      "effortCorePercentage": effortPercentage
+    })
+  });
+});
+
+// CORE PERCENTAGE CALCULATORS
+on("change:staminaCore", function() {
+  getAttrs(["staminaCore","staminaCore_max"], function(values) {
+    let stamina = parseFloat(values.staminaCore);
+    let staminaMax = parseFloat(values.staminaCore_max);
+    let staminaPercentage = (stamina/staminaMax)*100
+    
+    staminaPercentage = Math.ceil(staminaPercentage/5)*5
+
+    if (staminaPercentage > 100) {
+      staminaPercentage = 110
+    }
+
+    setAttrs({
+      "staminaCorePercentage": staminaPercentage
+    })
+  });
+});
+
+// CORE PERCENTAGE CALCULATORS
+on("change:focusCore", function() {
+  getAttrs(["focusCore","focusCore_max"], function(values) {
+    let focus = parseFloat(values.focusCore);
+    let focusMax = parseFloat(values.focusCore_max);
+    let focusPercentage = (focus/focusMax)*100
+    
+    focusPercentage = Math.ceil(focusPercentage/5)*5
+
+    if (focusPercentage > 100) {
+      focusPercentage = 110
+    }
+
+    setAttrs({
+      "focusCorePercentage": focusPercentage
+    })
+  });
+});
+
+
+on('change:haulsavings change:outlawsOnMission', () => {
+  getAttrs(["haulsavings","outlawsOnMission"], function(values) {
+
+    const currentHaul = parseFloat(values.haulsavings);
+    const outlawCount = parseInt(values.outlawsOnMission);
+
+    let halfHaul = currentHaul / 2;
+    let haulToOutlaw = halfHaul / outlawCount;
+    let dollar = "$"
+
+    halfHaul = dollar.concat('',halfHaul.toFixed(2));
+    haulToOutlaw = dollar.concat('',haulToOutlaw.toFixed(2));
+
+    setAttrs({
+      "cashToGang": halfHaul,
+      "cashToOutlaw": haulToOutlaw
+    });
+  });
+});
+
+on('clicked:addhaul', () => {
+  getAttrs(["haulsavings","haulsavingsModifier"], function(values) {
+    console.log("hey")
+
+    let total = parseFloat(values.haulsavings);
+    let mod = parseFloat(values.haulsavingsModifier);
+
+    if (isNaN(mod)) {
+      mod = 0;
+    }
+
+    total = total + mod;
+    total = total.toFixed(2);
+
+    setAttrs({
+      "haulsavings": total,
+      "haulsavingsModifier": ""
+    });
+  });
+});
+
+on('clicked:minushaul', () => {
+  getAttrs(["haulsavings","haulsavingsModifier"], function(values) {
+    console.log("hey")
+
+    let total = parseFloat(values.haulsavings);
+    let mod = parseFloat(values.haulsavingsModifier);
+
+    if (isNaN(mod)) {
+      mod = 0;
+    }
+
+    total = total - mod;
+    total = total.toFixed(2);
+
+    setAttrs({
+      "haulsavings": total,
+      "haulsavingsModifier": ""
+    });
+  });
+});
+
+on('clicked:addgang', () => {
+  getAttrs(["gangsavings","gangsavingsModifier"], function(values) {
+    console.log("hey")
+
+    let total = parseFloat(values.gangsavings);
+    let mod = parseFloat(values.gangsavingsModifier);
+
+    if (isNaN(mod)) {
+      mod = 0;
+    }
+
+    total = total + mod;
+    total = total.toFixed(2);
+
+    setAttrs({
+      "gangsavings": total,
+      "gangsavingsModifier": ""
+    });
+  });
+});
+
+on('clicked:minusgang', () => {
+  getAttrs(["gangsavings","gangsavingsModifier"], function(values) {
+    console.log("hey")
+
+    let total = parseFloat(values.gangsavings);
+    let mod = parseFloat(values.gangsavingsModifier);
+
+    if (isNaN(mod)) {
+      mod = 0;
+    }
+
+    total = total - mod;
+    total = total.toFixed(2);
+
+    setAttrs({
+      "gangsavings": total,
+      "gangsavingsModifier": ""
+    });
+  });
+});
+
+on('clicked:addmoney', () => {
+  getAttrs(["cashmoney","cashmoneyModifier"], function(values) {
+    console.log("hey")
+
+    let total = parseFloat(values.cashmoney);
+    let mod = parseFloat(values.cashmoneyModifier);
+
+    if (isNaN(mod)) {
+      mod = 0;
+    }
+
+    total = total + mod;
+    total = total.toFixed(2);
+
+    setAttrs({
+      "cashmoney": total,
+      "cashmoneyModifier": ""
+    });
+  });
+});
+
+on('clicked:minusmoney', () => {
+  getAttrs(["cashmoney","cashmoneyModifier"], function(values) {
+    console.log("hey")
+
+    let total = parseFloat(values.cashmoney);
+    let mod = parseFloat(values.cashmoneyModifier);
+
+    if (isNaN(mod)) {
+      mod = 0;
+    }
+
+    total = total - mod;
+    total = total.toFixed(2);
+
+    setAttrs({
+      "cashmoney": total,
+      "cashmoneyModifier": ""
+    });
   });
 });
 </script>
